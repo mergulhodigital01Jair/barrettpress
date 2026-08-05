@@ -10,7 +10,7 @@
 <meta property="og:description" content="Practical guides for people carrying too much.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://barrettpress.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23221F1C'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23FBF7F0' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/webp" href="/assets/logo-icon.webp">
 <style>
   :root{
     --paper:#FBF7F0;
@@ -38,11 +38,11 @@
 
   /* masthead */
   header{padding:72px 0 40px;border-bottom:1px solid var(--rule)}
-  .press{
-    font-family:var(--serif);font-size:clamp(38px,7vw,64px);
-    line-height:1;letter-spacing:-.015em;margin:0;
+  .press-logo{margin:0}
+  .press-logo img{
+    display:block;height:auto;
+    width:min(78vw,360px);
   }
-  .press span{display:block}
   .remit{
     font-family:var(--serif);font-size:clamp(17px,2.4vw,21px);
     color:var(--muted);margin:20px 0 0;max-width:34ch;line-height:1.45;
@@ -110,7 +110,7 @@
 
 <header>
   <div class="wrap">
-    <h1 class="press"><span>Barrett</span><span>Press</span></h1>
+    <h1 class="press-logo"><img src="/assets/logo.webp" alt="Barrett Press" width="2706" height="544"></h1>
     <p class="remit">Short, practical guides for people who are carrying too much and still have to get through the week.</p>
     <p class="label est">Independent publisher · Established 2026</p>
   </div>

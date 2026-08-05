@@ -18,10 +18,8 @@ a{color:var(--ink)}
 a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
 header{padding:44px 0 30px;border-bottom:1px solid var(--rule)}
-.press{
-  font-family:var(--serif);font-size:22px;letter-spacing:-.01em;
-  text-decoration:none;color:var(--ink);
-}
+.press-logo{display:inline-block;text-decoration:none;line-height:0}
+.press-logo img{display:block;height:26px;width:auto}
 h1{
   font-family:var(--serif);font-size:clamp(30px,5vw,42px);
   line-height:1.15;letter-spacing:-.015em;margin:34px 0 8px;
