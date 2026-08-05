@@ -3,10 +3,192 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Barrett Press</title>
+<title>Barrett Press — Practical guides for people carrying too much</title>
+<meta name="description" content="Barrett Press publishes short, practical guides for burnout, focus, and everyday life admin. Written by J. Barrett.">
+<link rel="canonical" href="https://barrettpress.com/">
+<meta property="og:title" content="Barrett Press">
+<meta property="og:description" content="Practical guides for people carrying too much.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://barrettpress.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23221F1C'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23FBF7F0' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#FBF7F0;
+    --ink:#221F1C;
+    --muted:#6E655B;
+    --rule:#E4DACB;
+    --clay:#A94F39;
+    --deep:#183544;
+    --gold:#E8D2A5;
+    --serif:"Iowan Old Style","Baskerville","Palatino Linotype",Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  .label{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;
+  }
+
+  /* masthead */
+  header{padding:72px 0 40px;border-bottom:1px solid var(--rule)}
+  .press{
+    font-family:var(--serif);font-size:clamp(38px,7vw,64px);
+    line-height:1;letter-spacing:-.015em;margin:0;
+  }
+  .press span{display:block}
+  .remit{
+    font-family:var(--serif);font-size:clamp(17px,2.4vw,21px);
+    color:var(--muted);margin:20px 0 0;max-width:34ch;line-height:1.45;
+  }
+  .est{margin-top:26px}
+
+  /* catalogue */
+  .cat{padding:8px 0 0}
+  .entry{
+    display:grid;grid-template-columns:216px 1fr;gap:44px;
+    padding:56px 0;border-bottom:1px solid var(--rule);align-items:start;
+  }
+  .plate{
+    aspect-ratio:3/4;border-radius:2px;padding:22px 20px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    color:var(--paper);position:relative;
+    box-shadow:0 1px 0 rgba(34,31,28,.12);
+  }
+  .plate--clay{background:var(--clay)}
+  .plate--deep{background:var(--deep)}
+  .plate-frame{
+    position:absolute;inset:9px;border:1px solid currentColor;opacity:.32;
+    border-radius:1px;pointer-events:none;
+  }
+  .plate-title{
+    font-family:var(--serif);font-size:26px;line-height:1.12;
+    letter-spacing:-.01em;margin:0;position:relative;
+  }
+  .plate--deep .plate-title em{font-style:normal;color:var(--gold);display:block}
+  .plate-foot{
+    font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    opacity:.75;position:relative;
+  }
+
+  .entry h2{
+    font-family:var(--serif);font-size:clamp(25px,3.6vw,33px);
+    line-height:1.2;margin:6px 0 0;letter-spacing:-.01em;
+  }
+  .sub{color:var(--muted);font-family:var(--serif);font-size:18px;margin:10px 0 0}
+  .entry p.body{margin:18px 0 0;max-width:52ch;color:#3B342E}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .go{
+    display:inline-flex;align-items:center;gap:9px;margin-top:26px;
+    font-family:var(--serif);font-size:18px;color:var(--ink);
+    text-decoration:none;border-bottom:1px solid var(--ink);
+    padding-bottom:3px;transition:gap .18s ease,color .18s ease;
+  }
+  .go:hover{gap:15px}
+  .entry--clay .go:hover{color:var(--clay);border-color:var(--clay)}
+  .entry--deep .go:hover{color:var(--deep);border-color:var(--deep)}
+  .go:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+  /* about */
+  .about{padding:60px 0;border-bottom:1px solid var(--rule)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:44px}
+  .about p{margin:0 0 16px;max-width:58ch;color:#3B342E}
+  .about p:last-child{margin-bottom:0}
+
+  footer{padding:48px 0 64px;font-size:14px;color:var(--muted)}
+  .fnav{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 22px}
+  .fnav a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .fnav a:hover{border-color:var(--ink)}
+  .mailto{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .disclaimer{margin:18px 0 0;font-size:12.5px;line-height:1.55;max-width:70ch}
+
+  @media (max-width:760px){
+    header{padding:52px 0 32px}
+    .entry{grid-template-columns:1fr;gap:26px;padding:44px 0}
+    .plate{width:172px;aspect-ratio:3/4}
+    .about-grid{grid-template-columns:1fr;gap:20px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
-<body style="font-family:Georgia,serif;text-align:center;padding:80px 20px;">
-<h1>Barrett Press</h1>
-<p>Coming soon.</p>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1 class="press"><span>Barrett</span><span>Press</span></h1>
+    <p class="remit">Short, practical guides for people who are carrying too much and still have to get through the week.</p>
+    <p class="label est">Independent publisher · Established 2026</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="cat" aria-label="Catalogue">
+
+    <article class="entry entry--clay">
+      <div class="plate plate--clay">
+        <span class="plate-frame" aria-hidden="true"></span>
+        <h3 class="plate-title">Burned Out &amp; Broke</h3>
+        <span class="plate-foot">30-Day Reset</span>
+      </div>
+      <div>
+        <p class="label">Burnout &amp; money</p>
+        <h2>Burned Out &amp; Broke</h2>
+        <p class="sub">The 30-Day Reset for Overwhelmed Women</p>
+        <p class="body">A compassionate thirty-day process for exhaustion and financial stress, built around fifteen quiet minutes a day. Each day gives you one reflection, one small action, and one honest journal prompt — with no perfect streak to maintain.</p>
+        <p class="meta"><span>Digital PDF</span><span>30 daily chapters</span><span>2026</span></p>
+        <a class="go" href="/burned-out-and-broke/">Read more<span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <article class="entry entry--deep">
+      <div class="plate plate--deep">
+        <span class="plate-frame" aria-hidden="true"></span>
+        <h3 class="plate-title">The Unstuck <em>System</em></h3>
+        <span class="plate-foot">Routines that hold</span>
+      </div>
+      <div>
+        <p class="label">Focus &amp; follow-through</p>
+        <h2>The Unstuck System</h2>
+        <p class="sub">Practical routines for ADHD brains</p>
+        <p class="body">For anyone who knows what needs doing and still cannot start. Short chapters on lowering the friction between intention and action, with re-entry points for the days the plan falls apart — and a routine that has a smaller setting for difficult weeks.</p>
+        <p class="meta"><span>Digital PDF</span><span>Revised edition</span><span>2026</span></p>
+        <a class="go" href="/unstuck-system/">Read more<span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="about">
+    <div class="about-grid">
+      <p class="label">About the press</p>
+      <div>
+        <p>Barrett Press publishes practical, non-clinical guides written by J. Barrett. Every title is built on the same idea: most people do not need to try harder. They need a smaller first step and a way back in after a bad week.</p>
+        <p>The books are short on purpose. They are written to be usable on a low-energy day, not admired on a shelf.</p>
+        <p>Questions about an order or a book: <a class="mailto" href="mailto:support@barrettpress.com">support@barrettpress.com</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <nav class="fnav" aria-label="Legal">
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/terms/">Terms of Use</a>
+    <a href="/refund/">Refund Policy</a>
+    <a href="mailto:support@barrettpress.com">Contact</a>
+  </nav>
+  <p>© 2026 Barrett Press. All rights reserved.</p>
+  <p class="disclaimer">All titles are published for general educational and informational purposes only. They do not provide medical, psychological, therapeutic, legal, or financial advice and are not a substitute for diagnosis, evaluation, or treatment. Results vary. Please seek support from a qualified professional when symptoms affect your health, safety, or daily functioning.</p>
+</footer>
+
 </body>
 </html>
