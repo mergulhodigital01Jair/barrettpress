@@ -349,7 +349,7 @@
         <details><summary>How long will I have access?</summary><p>Your access conditions will be displayed in the Hotmart offer and purchase area. Keep the purchase email and use the same account details used at checkout.</p></details>
         <details><summary>Which payment methods are accepted?</summary><p>Hotmart displays available payment methods and any installment options directly at checkout. Availability can vary by country and payment provider.</p></details>
         <details><summary>How does the 7-day guarantee work?</summary><p>You may request a refund within the stated 7-day guarantee period, following the process and conditions shown by Hotmart for this offer.</p></details>
-        <details><summary>How can I contact support?</summary><p>Email: <strong>support@barrettpress.com</strong></p></details>
+        <details><summary>How can I contact support?</summary><p>Email: <strong><a href="mailto:support@barrettpress.com">support@barrettpress.com</a></strong></p></details>
       </div>
     </section>
 
@@ -378,7 +378,7 @@
         <div>
           <strong style="color:white">Barrett Press</strong><br>
           © 2026 J. Barrett. All rights reserved.<br>
-          Support: support@barrettpress.com
+          Support: <a href="mailto:support@barrettpress.com" style="color:inherit">support@barrettpress.com</a>
         </div>
         <div>
           <a href="/privacy/">Privacy Policy</a> ·
@@ -411,6 +411,20 @@
         }
       });
     });
+
+    // Hide the sticky mobile buy bar once the footer scrolls into view,
+    // so it never sits on top of the footer links (privacy/terms/email).
+    const stickyBar = document.querySelector(".sticky");
+    const siteFooter = document.querySelector("footer");
+    const updateStickyBar = () => {
+      if (!stickyBar || !siteFooter) return;
+      const footerTop = siteFooter.getBoundingClientRect().top;
+      const nearFooter = footerTop < window.innerHeight + 40;
+      stickyBar.style.display = nearFooter ? "none" : "";
+    };
+    updateStickyBar();
+    window.addEventListener("scroll", updateStickyBar, { passive: true });
+    window.addEventListener("resize", updateStickyBar);
   </script>
 </body>
 </html>
