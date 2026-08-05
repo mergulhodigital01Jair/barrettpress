@@ -56,26 +56,12 @@
     padding:56px 0;border-bottom:1px solid var(--rule);align-items:start;
   }
   .plate{
-    aspect-ratio:3/4;border-radius:2px;padding:22px 20px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    color:var(--paper);position:relative;
-    box-shadow:0 1px 0 rgba(34,31,28,.12);
+    aspect-ratio:3/4;border-radius:2px;position:relative;
+    box-shadow:0 1px 0 rgba(34,31,28,.12);overflow:hidden;
   }
   .plate--clay{background:var(--clay)}
   .plate--deep{background:var(--deep)}
-  .plate-frame{
-    position:absolute;inset:9px;border:1px solid currentColor;opacity:.32;
-    border-radius:1px;pointer-events:none;
-  }
-  .plate-title{
-    font-family:var(--serif);font-size:26px;line-height:1.12;
-    letter-spacing:-.01em;margin:0;position:relative;
-  }
-  .plate--deep .plate-title em{font-style:normal;color:var(--gold);display:block}
-  .plate-foot{
-    font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-    opacity:.75;position:relative;
-  }
+  .plate img{display:block;width:100%;height:100%;object-fit:cover}
 
   .entry h2{
     font-family:var(--serif);font-size:clamp(25px,3.6vw,33px);
@@ -135,9 +121,7 @@
 
     <article class="entry entry--clay">
       <div class="plate plate--clay">
-        <span class="plate-frame" aria-hidden="true"></span>
-        <h3 class="plate-title">Burned Out &amp; Broke</h3>
-        <span class="plate-foot">30-Day Reset</span>
+        <img src="/covers/burned-out-and-broke.webp" alt="Burned Out &amp; Broke book cover" width="1024" height="1536" loading="lazy">
       </div>
       <div>
         <p class="label">Burnout &amp; money</p>
@@ -151,9 +135,7 @@
 
     <article class="entry entry--deep">
       <div class="plate plate--deep">
-        <span class="plate-frame" aria-hidden="true"></span>
-        <h3 class="plate-title">The Unstuck <em>System</em></h3>
-        <span class="plate-foot">Routines that hold</span>
+        <img src="/covers/unstuck-system.webp" alt="The Unstuck System book cover" width="2114" height="3000" loading="lazy">
       </div>
       <div>
         <p class="label">Focus &amp; follow-through</p>
