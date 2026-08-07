@@ -38,6 +38,16 @@
 
   /* masthead */
   header{padding:72px 0 40px;border-bottom:1px solid var(--rule)}
+  .masthead{
+    display:grid;grid-template-columns:1fr 0.92fr;gap:52px;align-items:center;
+  }
+  .masthead-art{
+    margin:0;border-radius:2px;overflow:hidden;
+    box-shadow:0 1px 0 rgba(34,31,28,.12);
+  }
+  .masthead-art img{
+    display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
+  }
   .press-logo{margin:0}
   .press-logo img{
     display:block;height:auto;
@@ -99,6 +109,7 @@
 
   @media (max-width:760px){
     header{padding:52px 0 32px}
+    .masthead{grid-template-columns:1fr;gap:30px}
     .entry{grid-template-columns:1fr;gap:26px;padding:44px 0}
     .plate{width:172px;aspect-ratio:3/4}
     .about-grid{grid-template-columns:1fr;gap:20px}
@@ -109,10 +120,15 @@
 <body>
 
 <header>
-  <div class="wrap">
-    <h1 class="press-logo"><img src="/assets/logo.webp" alt="Barrett Press" width="2706" height="544"></h1>
-    <p class="remit">Short, practical guides for people who are carrying too much and still have to get through the week.</p>
-    <p class="label est">Independent publisher · Established 2026</p>
+  <div class="wrap masthead">
+    <div>
+      <h1 class="press-logo"><img src="/assets/logo.webp" alt="Barrett Press" width="2706" height="544"></h1>
+      <p class="remit">Short, practical guides for people who are carrying too much and still have to get through the week.</p>
+      <p class="label est">Independent publisher · Established 2026</p>
+    </div>
+    <figure class="masthead-art">
+      <img src="/assets/hero-desk-43.webp" alt="A quiet desk with a notebook, a cup of coffee, reading glasses and a small stack of books" width="1200" height="900" fetchpriority="high">
+    </figure>
   </div>
 </header>
 
