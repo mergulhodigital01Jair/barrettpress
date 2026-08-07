@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- Keeps this page out of Google and other search engines -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="Companion tools for readers of Burned Out & Broke.">
+
+<!-- Makes the home-screen shortcut open full screen, like an installed app -->
+<meta name="theme-color" content="#F6ECDD">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="30-Day Reset">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>30-Day Reset Companion</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6ECDD;
+  --card:#FFF9EF;
+  --ink:#2B231D;
+  --ink-soft:#6B5F52;
+  --terracotta:#B0502E;
+  --terracotta-dark:#7E3A22;
+  --terracotta-pale:#F1DAC4;
+  --sage-pale:#E6E9D8;
+  --sage-text:#3A4429;
+  --gold-pale:#F2E6C7;
+  --gold-text:#6B4F14;
+  --rose:#A15D4E;
+  --border:#E4D3BC;
+  --impulse-bg:#F2D9CE;
+  --impulse-text:#7E3A22;
+}
+*{box-sizing:border-box;}
+body{margin:0;}
+h1,h2,h3,p{margin:0;}
+body{font-family:'Work Sans',sans-serif;color:var(--ink);}
+.app-outer{min-height:100vh;background:var(--cream);display:flex;flex-direction:column;align-items:center;padding:24px 12px 40px;}
+.preview-bar{width:100%;max-width:420px;background:#EDEAE2;border:1px solid #D8D3C6;border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:12px;color:#6b6b63;}
+.preview-bar button{background:#fff;border:1px solid #D8D3C6;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:14px;}
+.preview-bar input[type=number]{width:44px;text-align:center;border:1px solid #D8D3C6;border-radius:6px;padding:4px;}
+.preview-label{text-transform:uppercase;letter-spacing:0.06em;font-size:10px;color:#8a8578;margin-right:auto;}
+.phone{width:100%;max-width:420px;background:var(--card);border-radius:28px;border:1px solid var(--border);overflow:hidden;box-shadow:0 20px 40px -20px rgba(60,40,20,0.25);position:relative;}
+.app-header{position:relative;padding:28px 24px 20px;background:radial-gradient(120% 140% at 30% -10%, #F3D9BE 0%, var(--cream) 60%);}
+.app-header .day-label{font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:var(--terracotta-dark);}
+.app-header .day-sub{font-size:13px;color:var(--ink-soft);margin:2px 0 16px;}
+.progress-track{height:6px;background:var(--terracotta-pale);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--terracotta);border-radius:4px;transition:width .3s;}
+.tab-content{padding:20px 24px 100px;min-height:360px;}
+.section-label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin:20px 0 8px;}
+.section-label:first-child{margin-top:0;}
+.mood-row{display:flex;justify-content:space-between;gap:6px;}
+.mood-btn{flex:1;font-size:22px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:8px 0;cursor:pointer;}
+.mood-btn.selected{background:var(--terracotta-pale);border-color:var(--terracotta);}
+.energy-row{display:flex;gap:8px;}
+.energy-dot{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;}
+.energy-dot.selected{background:var(--terracotta);border-color:var(--terracotta);}
+.prompt-text{font-family:'Fraunces',serif;font-size:17px;line-height:1.5;color:var(--ink);margin:0 0 10px;}
+.reflection-box{width:100%;min-height:70px;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-family:'Work Sans',sans-serif;font-size:14px;resize:vertical;background:var(--card);color:var(--ink);}
+.hint-text{font-size:12px;color:var(--ink-soft);margin-top:6px;font-style:italic;}
+.day10-input{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;background:var(--card);color:var(--ink);}
+.tasks-list{display:flex;flex-direction:column;gap:10px;}
+.task-item{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:14px;cursor:pointer;}
+.task-item input{width:18px;height:18px;accent-color:var(--terracotta);}
+.callback-card{background:var(--sage-pale);border:1px solid #CBD2B4;border-radius:14px;padding:14px 16px;margin-bottom:16px;}
+.callback-label{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--sage-text);margin:0 0 4px;}
+.callback-value{font-family:'Fraunces',serif;font-size:22px;color:var(--sage-text);}
+.callback-quote{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--sage-text);}
+.callback-note{font-size:12px;color:var(--sage-text);margin-top:4px;}
+.money-form{display:flex;gap:8px;margin-bottom:12px;}
+.money-form select,.money-form input{border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:14px;background:var(--card);color:var(--ink);}
+.money-form select{flex:1;}
+.money-form input{width:90px;}
+.primary-btn{background:var(--terracotta);color:#FFF7EE;border:none;border-radius:10px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;}
+.primary-btn.small{padding:8px 12px;}
+.secondary-btn{background:transparent;border:1px solid var(--terracotta);color:var(--terracotta-dark);border-radius:10px;padding:10px 16px;font-size:14px;width:100%;cursor:pointer;}
+.secondary-btn:disabled{border-color:var(--border);color:var(--ink-soft);cursor:default;}
+.streak-chip{display:inline-block;background:var(--sage-pale);color:var(--sage-text);font-size:12px;padding:6px 12px;border-radius:20px;margin-bottom:14px;}
+.money-list{display:flex;flex-direction:column;gap:8px;}
+.money-item{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;}
+.money-cat-tag{text-transform:capitalize;font-size:11px;padding:3px 8px;border-radius:8px;}
+.cat-needs{background:var(--sage-pale);color:var(--sage-text);}
+.cat-wants{background:var(--gold-pale);color:var(--gold-text);}
+.cat-impulse{background:var(--impulse-bg);color:var(--impulse-text);}
+.money-amt{margin-left:auto;font-weight:600;}
+.money-del{background:none;border:none;color:var(--ink-soft);font-size:16px;cursor:pointer;}
+.empty-text{font-size:13px;color:var(--ink-soft);}
+.progress-ring-wrap{display:flex;justify-content:center;margin:10px 0 24px;}
+.progress-ring{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;}
+.progress-ring::after{content:'';position:absolute;inset:12px;background:var(--card);border-radius:50%;}
+.progress-ring-num{position:relative;z-index:1;font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--terracotta-dark);display:block;text-align:center;}
+.progress-ring-den{position:relative;z-index:1;font-size:12px;color:var(--ink-soft);display:block;text-align:center;}
+.mood-trend{display:flex;gap:8px;}
+.trend-dot{flex:1;height:36px;border-radius:8px;background:var(--terracotta);}
+.chips-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.chip{background:var(--gold-pale);color:var(--gold-text);font-size:12px;padding:6px 12px;border-radius:20px;}
+.summary-card{background:var(--terracotta-pale);border-radius:16px;padding:20px;text-align:center;margin-bottom:16px;}
+.summary-stat{font-family:'Fraunces',serif;font-size:36px;color:var(--terracotta-dark);}
+.summary-label{font-size:12px;color:var(--ink-soft);margin-top:4px;}
+.app-footnote{margin:26px 0 0;padding-top:18px;border-top:1px solid var(--border);}
+.install-btn{display:none;width:100%;align-items:center;justify-content:center;background:var(--terracotta-pale);border:1px solid #DFBFA6;color:var(--terracotta-dark);border-radius:12px;padding:12px 14px;font-family:'Work Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:12px;}
+.install-btn.show{display:flex;}
+.footnote-link{display:block;width:100%;text-align:left;background:none;border:none;padding:0;color:var(--ink-soft);font-family:'Work Sans',sans-serif;font-size:12.5px;font-weight:600;text-decoration:underline;cursor:pointer;}
+.footnote-panel{display:none;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:12px;font-size:13px;line-height:1.6;color:var(--ink-soft);}
+.footnote-panel.open{display:block;}
+.footnote-panel h4{font-family:'Fraunces',serif;font-size:13px;text-transform:uppercase;letter-spacing:0.05em;color:var(--terracotta-dark);margin:14px 0 6px;}
+.footnote-panel h4:first-child{margin-top:0;}
+.footnote-panel p{margin:0 0 10px;}
+.footnote-panel p:last-child{margin-bottom:0;}
+.footnote-panel ul{margin:0 0 10px;padding-left:18px;}
+.footnote-panel li{margin-bottom:5px;}
+.disclaimer{font-size:11.5px;line-height:1.5;color:#8a8070;margin-top:14px;}
+.bottom-nav{position:absolute;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--border);padding:10px 24px 14px;}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer;color:var(--ink-soft);font-size:11px;}
+.nav-btn.active{color:var(--terracotta-dark);}
+.nav-btn svg{width:20px;height:20px;}
+.sos-fab{position:absolute;right:20px;bottom:78px;background:var(--rose);color:#FFF3EC;border:none;border-radius:24px;padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 8px 16px -6px rgba(120,50,40,0.4);z-index:5;}
+.modal-overlay{position:absolute;inset:0;background:rgba(43,35,29,0.55);display:none;align-items:center;justify-content:center;padding:24px;z-index:20;border-radius:28px;}
+.modal-card{background:var(--cream);border-radius:20px;padding:28px 22px;max-width:320px;text-align:center;position:relative;}
+.modal-card h3{font-family:'Fraunces',serif;font-size:20px;margin:0 0 14px;color:var(--terracotta-dark);}
+.breathing-circle{width:100px;height:100px;border-radius:50%;background:var(--terracotta-pale);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--terracotta-dark);transition:transform 4s ease-in-out;}
+.breathing-circle.expand{transform:scale(1.3);}
+.compassion-line{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink);margin:0 0 20px;line-height:1.5;}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;font-size:18px;color:var(--ink-soft);cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="app-outer">
+  <!-- Testing bar: hidden from buyers, shows only when the address ends with ?dev=1 -->
+  <div class="preview-bar" id="preview-bar" style="display:none">
+    <span class="preview-label">Prototype preview</span>
+    <button id="prev-day" aria-label="Previous day">&#8249;</button>
+    <input type="number" id="preview-day-input" min="1" max="30" value="1">
+    <button id="next-day" aria-label="Next day">&#8250;</button>
+    <button id="reset-demo" title="Reset demo data" style="margin-left:auto;">&#8635;</button>
+  </div>
+  <div class="phone">
+    <div class="app-header">
+      <p class="day-label" id="day-label">Day 1</p>
+      <p class="day-sub">of your reset</p>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:3%"></div></div>
+    </div>
+    <div class="tab-content" id="tab-content"></div>
+    <button class="sos-fab" id="sos-btn">Hard day?</button>
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-tab="home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" data-tab="money" aria-label="Money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16" cy="14" r="1"/></svg>
+        <span>Money</span>
+      </button>
+      <button class="nav-btn" data-tab="progress" aria-label="Progress">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16"/><path d="M8 15v4M12 11v8M16 7v12"/></svg>
+        <span>Progress</span>
+      </button>
+    </nav>
+    <div class="modal-overlay" id="sos-overlay">
+      <div class="modal-card">
+        <button class="modal-close" id="sos-close" aria-label="Close">&times;</button>
+        <h3 id="sos-title">It's okay. Let's just get through today.</h3>
+        <div class="breathing-circle" id="breathing-circle">Breathe in</div>
+        <p class="compassion-line" id="sos-line"></p>
+        <button class="primary-btn" id="sos-permission" style="width:100%;">Give yourself permission to stop for today</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var STORE_KEY = 'reset-companion-v1';
+  var DEV = /[?&]dev=1/.test(window.location.search);
+  var state = { days:{}, money:{}, day10Number:null, startDate:null, currentDay:1, lastSeenDate:null };
+  var currentDay = 1;
+  var returningAfterGap = 0; // days away, only for this session's welcome-back note
+  var activeTab = 'home';
+  var breathTimer = null;
+
+  var PROMPTS = [
+    "What's one thing you did today only because you thought you had to?",
+    "Where in your body do you feel tired right now?",
+    "What would it look like to do 20 percent less tomorrow?",
+    "When did you last feel truly rested? What was different?",
+    "What's one task you could hand off this week?",
+    "What are you pretending is fine that actually isn't?",
+    "If today had one win, what was it?",
+    "What's one number about your money you've been avoiding?",
+    "When did you last feel calm about money? What made that possible?",
+    "Pick a number that matters to you right now.",
+    "What's one small money habit you're proud of?",
+    "What would it feel like to check your balance without flinching?",
+    "What's one bill or subscription you haven't looked at in a while?",
+    "What's one thing you spent on this week that was actually worth it?",
+    "What's one small routine that used to help you, before things got hard?",
+    "What time of day do you have the least energy? What could you protect there?",
+    "What's one thing you could prep the night before to make mornings easier?",
+    "Who could you ask for 15 minutes of help this week?",
+    "What's one boundary you've been meaning to set?",
+    "What's one thing that felt easier today than it did two weeks ago?",
+    "Read back what you wrote on day 1. What's changed since then?",
+    "What's one habit from the last three weeks you want to keep?",
+    "What would you tell a friend who was exactly where you were on day 1?",
+    "What's still hard, and that's allowed to be true?",
+    "What's one thing you've stopped apologizing for?",
+    "Where do you notice more room to breathe than a month ago?",
+    "What's one thing you want to remember about this month?",
+    "What would make next month easier than this one?",
+    "Read back what you wrote on day 1 one more time. What do you want to say to her?",
+    "What's one word for how you want to feel a month from now?"
+  ];
+  var SELF_TASKS = [
+    "Drink a full glass of water before noon",
+    "Step outside for five minutes",
+    "Put your phone in another room for one hour",
+    "Say no to one thing today",
+    "Sit down for your first meal, no screen",
+    "Text one person you trust just to say hi",
+    "Stretch for two minutes when you wake up",
+    "Go to bed fifteen minutes earlier tonight",
+    "Eat something before checking your phone",
+    "Take three slow breaths before you get out of bed",
+    "Eat lunch sitting down, away from your desk",
+    "Leave one message unanswered until tomorrow",
+    "Wash your face slowly tonight, like it matters",
+    "Put on something that fits you today",
+    "Take the long way home, even by two minutes",
+    "Sit in your car for five minutes before going inside",
+    "Let one thing stay undone on purpose",
+    "Ask someone for help with one small thing",
+    "Turn off one notification you never asked for",
+    "Eat a real breakfast, whatever real means today",
+    "Stand in the sun for three minutes",
+    "Say the words out loud: this is a lot",
+    "Cancel one thing you agreed to reluctantly",
+    "Put your feet up for ten minutes, no phone",
+    "Listen to one song all the way through",
+    "Drink water before your second coffee",
+    "Close your eyes for two minutes in the middle of the day",
+    "Go to bed without setting one extra alarm",
+    "Write down one thing you're not going to do this week",
+    "Do nothing for five minutes, and don't call it lazy"
+  ];
+  var MONEY_TASKS = [
+    "Look at one account balance, just once",
+    "Cancel or pause one subscription you forgot about",
+    "Move five dollars somewhere you won't touch it",
+    "Write down what you spent yesterday, no judgment",
+    "Check one bill due date",
+    "Skip one impulse buy today",
+    "Name one expense you can pause this month",
+    "Look at your bank app for thirty seconds and close it",
+    "Round up one purchase and save the difference",
+    "Write down one financial worry, then close the notebook",
+    "Write down the amount you're most afraid of",
+    "Check one card statement for something you forgot",
+    "Set one bill to autopay",
+    "Look up the balance you've been avoiding",
+    "Put one purchase back before you check out",
+    "Add up what you spent on food yesterday",
+    "Find one charge you don't recognize",
+    "Move any spare change into savings",
+    "Wait twenty-four hours on something in your cart",
+    "Write down one thing money is not your fault for",
+    "Check when your next paycheck lands",
+    "Pick one debt and look only at its number",
+    "Unsubscribe from one store's emails",
+    "Note one expense that was worth every cent",
+    "Ask one question you've been embarrassed to ask about money",
+    "Set a spending limit for the weekend, in writing",
+    "Look at last month's total, then close the app",
+    "Name one thing you'd stop paying for if you had to",
+    "Write down what enough would look like for you",
+    "Do nothing about money today, on purpose"
+  ];
+  var HOME_TASKS = [
+    "Clear one surface for five minutes",
+    "Put away five things that are out of place",
+    "Start one load of laundry",
+    "Wipe down one counter",
+    "Empty one trash can",
+    "Open the mail pile for two minutes",
+    "Put dishes away before bed",
+    "Make the bed, even if it's the only thing you do",
+    "Set out tomorrow's clothes tonight",
+    "Throw away three things you don't need",
+    "Clear the spot by the front door",
+    "Wash the pan that's been soaking",
+    "Fold one load, even if it stays on the couch",
+    "Take out one bag of things to donate",
+    "Wipe the bathroom mirror",
+    "Change the sheets, or just the pillowcase",
+    "Put five things back where they live",
+    "Clear one shelf in the fridge",
+    "Sweep one room, badly is fine",
+    "Deal with the pile on the chair",
+    "Water the plants that are still alive",
+    "Clear the kitchen table before bed",
+    "Sort the mail into keep and toss",
+    "Put the clean clothes away, finally",
+    "Wipe down the stovetop",
+    "Empty one drawer you're afraid of",
+    "Pick up everything on the floor of one room",
+    "Take five minutes on the worst corner in the house",
+    "Put your bag and keys in the same place",
+    "Leave the house tidier than you found it, by one thing"
+  ];
+  var COMPASSION = [
+    "You are not behind. You are exactly where a person carrying this much would be.",
+    "Rest is not something you have to earn.",
+    "You don't have to fix everything today.",
+    "Tired is not the same as failing.",
+    "One hard day doesn't undo the last few weeks.",
+    "You're allowed to stop here for now."
+  ];
+
+  function taskFor(list, day){ return list[(day-1) % list.length]; }
+  function dayState(d){
+    if(!state.days[d]) state.days[d] = { mood:null, energy:null, reflection:'', tasks:[false,false,false] };
+    return state.days[d];
+  }
+  function moneyFor(d){
+    if(!state.money[d]) state.money[d] = [];
+    return state.money[d];
+  }
+  function escapeHtml(s){
+    if(s==null) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ---------- Storage ----------
+  // Saved on this device only. No account, no server.
+  var memFallback = null; // used when the browser blocks storage (private mode)
+
+  function readStore(){
+    try{
+      var raw = window.localStorage.getItem(STORE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){
+      return memFallback ? JSON.parse(JSON.stringify(memFallback)) : null;
+    }
+  }
+  function save(){
+    state.currentDay = currentDay;
+    memFallback = state;
+    try{ window.localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function resetAll(){
+    if(!window.confirm('Clear everything and start over from day 1?')) return;
+    state = { days:{}, money:{}, day10Number:null, startDate:dateKey(new Date()), currentDay:1, lastSeenDate:dateKey(new Date()) };
+    currentDay = 1;
+    returningAfterGap = 0;
+    try{ window.localStorage.removeItem(STORE_KEY); }catch(e){}
+    memFallback = null;
+    save();
+    render();
+  }
+
+  // ---------- What day is she on ----------
+  function pad2(n){ return (n<10?'0':'')+n; }
+  function dateKey(d){ return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate()); }
+  function fromKey(k){
+    var p = String(k).split('-');
+    return new Date(Number(p[0]), Number(p[1])-1, Number(p[2]));
+  }
+  function daysApart(aKey, bKey){
+    return Math.round((fromKey(bKey) - fromKey(aKey)) / 86400000);
+  }
+
+  // Did she actually show up on this day? Any one of the three counts.
+  function showedUp(d){
+    var e = state.days[d];
+    if(!e) return false;
+    if(e.mood != null) return true;
+    if((e.reflection||'').trim() !== '') return true;
+    return (e.tasks||[]).some(function(t){ return !!t; });
+  }
+
+  /*
+    The rule: a missed day costs nothing, but the days can't be rushed.
+    The day number moves forward only when the calendar has turned AND she
+    showed up on the day she's currently on. Disappear for a week and you
+    come back to the same day, right where you left it.
+  */
+  function advanceDay(){
+    var today = dateKey(new Date());
+    if(!state.startDate){ state.startDate = today; }
+    if(!state.lastSeenDate){ state.lastSeenDate = today; return; }
+    if(state.lastSeenDate === today) return;
+
+    var away = daysApart(state.lastSeenDate, today);
+    if(away < 0){ state.lastSeenDate = today; return; } // clock moved backwards; ignore
+
+    if(currentDay < 30 && showedUp(currentDay)){
+      currentDay++;
+      if(away > 1) returningAfterGap = away;
+    } else if(away > 1){
+      returningAfterGap = away;
+    }
+    state.lastSeenDate = today;
+  }
+
+  function load(){
+    var saved = readStore();
+    if(saved && typeof saved === 'object'){
+      state.days = saved.days || {};
+      state.money = saved.money || {};
+      state.day10Number = saved.day10Number != null ? saved.day10Number : null;
+      state.startDate = saved.startDate || null;
+      state.lastSeenDate = saved.lastSeenDate || null;
+      currentDay = Math.min(30, Math.max(1, parseInt(saved.currentDay,10) || 1));
+    }
+    advanceDay();
+    save();
+    if(DEV){ document.getElementById('preview-bar').style.display = 'flex'; }
+    render();
+  }
+
+  function checkinStreak(){
+    var s=0;
+    for(var d=currentDay; d>=1; d--){
+      if(state.days[d] && state.days[d].mood){ s++; } else break;
+    }
+    return s;
+  }
+  // Only days she actually logged can count. A day with nothing in it proves
+  // nothing, so the streak stops there instead of quietly rewarding silence.
+  function noImpulseStreak(){
+    var s=0;
+    for(var d=currentDay; d>=1; d--){
+      var entries = state.money[d]||[];
+      if(entries.length===0) break;
+      if(entries.some(function(e){ return e.cat==='impulse'; })) break;
+      s++;
+    }
+    return s;
+  }
+
+  function homeHTML(){
+    var d = dayState(currentDay);
+    var html = '';
+    if(currentDay===30){ return summaryHTML(); }
+    if(returningAfterGap >= 2){
+      html += "<div class='callback-card'><p class='callback-label'>Welcome back</p>"
+           +  "<p class='callback-note'>You were away "+returningAfterGap+" days, and nothing was lost. "
+           +  "Day "+currentDay+" was waiting exactly where you left it.</p></div>";
+    }
+    if(currentDay===12 || currentDay===20){
+      if(state.day10Number!=null && state.day10Number!==''){
+        html += "<div class='callback-card'><p class='callback-label'>On day 10, you wrote down</p><p class='callback-value'>"+escapeHtml(state.day10Number)+"</p><p class='callback-note'>Here it is again.</p></div>";
+      }
+    }
+    if(currentDay===21 || currentDay===29){
+      var d1 = state.days[1];
+      if(d1 && d1.reflection){
+        html += "<div class='callback-card'><p class='callback-label'>This is what you wrote on day 1</p><p class='callback-quote'>&ldquo;"+escapeHtml(d1.reflection)+"&rdquo;</p></div>";
+      }
+    }
+    html += "<div class='section-label'>How are you feeling this morning</div>";
+    html += "<div class='mood-row'>";
+    ['\u{1F629}','\u{1F615}','\u{1F610}','\u{1F642}','\u{1F60A}'].forEach(function(emo,i){
+      var val = i+1;
+      var sel = d.mood===val ? ' selected' : '';
+      html += "<button class='mood-btn"+sel+"' data-mood='"+val+"' aria-label='Mood "+val+"'>"+emo+"</button>";
+    });
+    html += "</div>";
+    html += "<div class='section-label'>Energy today</div>";
+    html += "<div class='energy-row'>";
+    for(var i=1;i<=5;i++){
+      var sel2 = d.energy===i ? ' selected' : '';
+      html += "<button class='energy-dot"+sel2+"' data-energy='"+i+"' aria-label='Energy "+i+"'></button>";
+    }
+    html += "</div>";
+    html += "<div class='section-label'>Today's prompt</div>";
+    html += "<p class='prompt-text'>"+PROMPTS[currentDay-1]+"</p>";
+    html += "<textarea id='reflection-input' class='reflection-box' placeholder='Jot down anything on your mind'>"+escapeHtml(d.reflection||'')+"</textarea>";
+    if(currentDay===1){ html += "<p class='hint-text'>We'll come back to this on day 21.</p>"; }
+    if(currentDay===10){
+      html += "<div class='section-label'>Pick a number that matters right now</div>";
+      html += "<input type='text' id='day10-input' class='day10-input' placeholder='Any number, money, hours, anything' value='"+escapeHtml(state.day10Number||'')+"'>";
+      html += "<p class='hint-text'>We'll bring this back later.</p>";
+    }
+    html += "<div class='section-label'>Three small things for today</div>";
+    html += "<div class='tasks-list'>";
+    var labels = [taskFor(SELF_TASKS,currentDay), taskFor(MONEY_TASKS,currentDay), taskFor(HOME_TASKS,currentDay)];
+    labels.forEach(function(label,i){
+      var checked = d.tasks[i] ? ' checked' : '';
+      html += "<label class='task-item'><input type='checkbox' data-task='"+i+"'"+checked+"><span>"+label+"</span></label>";
+    });
+    html += "</div>";
+    return html;
+  }
+
+  function summaryHTML(){
+    var moods = [];
+    for(var i=1;i<=30;i++){ if(state.days[i] && state.days[i].mood) moods.push(state.days[i].mood); }
+    var avg = moods.length ? (moods.reduce(function(a,b){return a+b;},0)/moods.length).toFixed(1) : '-';
+    var d1 = state.days[1];
+    var html = "<div class='section-label'>Your 30 day journey</div>";
+    html += "<div class='summary-card'><p class='summary-stat'>"+avg+"</p><p class='summary-label'>Average mood, out of 5</p></div>";
+    html += "<div class='section-label'>Where you started</div>";
+    html += "<p class='prompt-text'>"+(d1 && d1.reflection ? "&ldquo;"+escapeHtml(d1.reflection)+"&rdquo;" : "No entry recorded for day 1.")+"</p>";
+    html += "<button id='download-btn' class='primary-btn' style='width:100%;margin-top:8px;'>Download your journal</button>";
+    return html;
+  }
+
+  function moneyHTML(){
+    var entries = moneyFor(currentDay);
+    var html = "<div class='section-label'>Track today, no judgment</div>";
+    html += "<div class='money-form'>";
+    html += "<select id='money-cat'><option value='needs'>Needs</option><option value='wants'>Wants</option><option value='impulse'>Impulse</option></select>";
+    html += "<input type='number' id='money-amount' placeholder='Amount' min='0' step='0.01'>";
+    html += "<button id='money-add' class='primary-btn small'>Add</button>";
+    html += "</div>";
+    var nis = noImpulseStreak();
+    html += nis > 0
+      ? "<div class='streak-chip'>"+nis+(nis===1?" day":" days")+" logged without impulse spending</div>"
+      : "<div class='streak-chip'>Log a day to start this count</div>";
+    html += "<div class='money-list'>";
+    if(entries.length===0){ html += "<p class='empty-text'>Nothing logged today yet.</p>"; }
+    entries.forEach(function(e,i){
+      html += "<div class='money-item'><span class='money-cat-tag cat-"+e.cat+"'>"+e.cat+"</span><span class='money-amt'>$"+Number(e.amount).toFixed(2)+"</span><button class='money-del' data-del='"+i+"' aria-label='Remove'>&times;</button></div>";
+    });
+    html += "</div>";
+    return html;
+  }
+
+  function progressHTML(){
+    var pct = Math.round(currentDay/30*100);
+    var html = "<div class='progress-ring-wrap'><div class='progress-ring' style='background:conic-gradient(var(--terracotta) "+pct+"%, var(--terracotta-pale) 0)'><span class='progress-ring-num'>"+currentDay+"</span><span class='progress-ring-den'>of 30</span></div></div>";
+    html += "<div class='section-label'>Last 7 days</div>";
+    html += "<div class='mood-trend'>";
+    for(var d=Math.max(1,currentDay-6); d<=currentDay; d++){
+      var m = state.days[d] ? state.days[d].mood : null;
+      var op = m ? (0.3+m*0.14).toFixed(2) : 0.15;
+      html += "<div class='trend-dot' style='opacity:"+op+"'></div>";
+    }
+    html += "</div>";
+    html += "<div class='section-label'>Along the way</div>";
+    html += "<div class='chips-row'>";
+    if(checkinStreak()>=3) html += "<span class='chip'>"+checkinStreak()+" day check-in streak</span>";
+    if(currentDay>=7) html += "<span class='chip'>First week complete</span>";
+    if(currentDay>=15) html += "<span class='chip'>Halfway there</span>";
+    if(currentDay>=25) html += "<span class='chip'>Almost home</span>";
+    html += "</div>";
+    html += "<button id='view-summary-btn' class='secondary-btn'"+(currentDay<30?' disabled':'')+">"+(currentDay<30?'Unlocks on day 30':'View day 30 summary')+"</button>";
+    return html;
+  }
+
+  function render(){
+    document.getElementById('day-label').textContent = 'Day '+currentDay;
+    document.getElementById('progress-fill').style.width = Math.round(currentDay/30*100)+'%';
+    document.getElementById('preview-day-input').value = currentDay;
+    renderTab();
+  }
+
+  function footnoteHTML(){
+    return "<div class='app-footnote'>"
+      + "<button class='install-btn' id='install-btn'>Keep this on my phone</button>"
+      + "<button class='footnote-link' id='about-link'>How this works &mdash; and what it isn't</button>"
+      + "<div class='footnote-panel' id='about-panel'>"
+        + "<h4>What this is</h4>"
+        + "<p>Four small things, once a day: a check-in, a prompt to write against, three tiny tasks, and a place to log what you spent. That's the whole app. It takes about five minutes.</p>"
+        + "<h4>Missing a day</h4>"
+        + "<p>Nothing happens. The day waits for you. Come back after a week and you'll pick up on the same day you left, not seven days behind. There is no streak here to break.</p>"
+        + "<h4>Keeping it on your phone</h4>"
+        + "<p><b>iPhone:</b> open this in Safari, tap the share button at the bottom, scroll down and tap Add to Home Screen.</p>"
+        + "<p><b>Android:</b> tap the three dots in Chrome, then Install app. If you don't see the icon on your home screen, nothing went wrong &mdash; Android usually files new apps in your app list. Swipe up from the middle of your home screen and search for it.</p>"
+        + "<p>You don't have to do this at all. The link works fine on its own.</p>"
+        + "<h4>Where your writing lives</h4>"
+        + "<p>On this device, and nowhere else. Nothing is sent anywhere, there's no account, and no one else can read it &mdash; including us. That also means it doesn't travel between your phone and your computer, and clearing your browser's data would erase it. On day 30 you can download everything you wrote as a file to keep.</p>"
+        + "<h4>What this isn't</h4>"
+        + "<p>It's a journaling and organizing tool, not therapy, not a diagnosis, and not medical or financial advice. It doesn't treat anything, and it isn't a substitute for care from a licensed professional. If things feel heavier than a hard week &mdash; or you're worried about your own safety &mdash; please reach out to a doctor, a therapist, or someone you trust. That's a stronger move than anything in this app.</p>"
+      + "</div>"
+      + "<p class='disclaimer'>Journaling and organizational support &mdash; not therapy, diagnosis, or medical or financial advice. Does not replace care from a licensed professional.</p>"
+      + "</div>";
+  }
+
+  function renderTab(){
+    var el = document.getElementById('tab-content');
+    if(activeTab==='home') el.innerHTML = homeHTML() + footnoteHTML();
+    else if(activeTab==='money') el.innerHTML = moneyHTML() + footnoteHTML();
+    else el.innerHTML = progressHTML() + footnoteHTML();
+    attachTabHandlers();
+  }
+
+  function attachTabHandlers(){
+    document.querySelectorAll('.mood-btn').forEach(function(btn){
+      btn.onclick = function(){
+        dayState(currentDay).mood = parseInt(btn.getAttribute('data-mood'),10);
+        save(); renderTab();
+      };
+    });
+    document.querySelectorAll('.energy-dot').forEach(function(btn){
+      btn.onclick = function(){
+        dayState(currentDay).energy = parseInt(btn.getAttribute('data-energy'),10);
+        save(); renderTab();
+      };
+    });
+    var refl = document.getElementById('reflection-input');
+    if(refl){ refl.onblur = function(){ dayState(currentDay).reflection = refl.value; save(); }; }
+    var d10 = document.getElementById('day10-input');
+    if(d10){ d10.onblur = function(){ state.day10Number = d10.value; save(); }; }
+    document.querySelectorAll('[data-task]').forEach(function(cb){
+      cb.onchange = function(){
+        dayState(currentDay).tasks[parseInt(cb.getAttribute('data-task'),10)] = cb.checked;
+        save();
+      };
+    });
+    var addBtn = document.getElementById('money-add');
+    if(addBtn){
+      addBtn.onclick = function(){
+        var cat = document.getElementById('money-cat').value;
+        var amt = parseFloat(document.getElementById('money-amount').value);
+        if(!amt || amt<=0) return;
+        moneyFor(currentDay).push({cat:cat, amount:amt});
+        save(); renderTab();
+      };
+    }
+    document.querySelectorAll('[data-del]').forEach(function(btn){
+      btn.onclick = function(){
+        moneyFor(currentDay).splice(parseInt(btn.getAttribute('data-del'),10),1);
+        save(); renderTab();
+      };
+    });
+    var about = document.getElementById('about-link');
+    if(about){
+      about.onclick = function(){ document.getElementById('about-panel').classList.toggle('open'); };
+    }
+    var ib = document.getElementById('install-btn');
+    if(ib){
+      ib.onclick = doInstall;
+      if(!runningAsApp()) ib.classList.add('show');
+    }
+    var dl = document.getElementById('download-btn');
+    if(dl){ dl.onclick = downloadJournal; }
+    var vs = document.getElementById('view-summary-btn');
+    if(vs){
+      vs.onclick = function(){
+        if(currentDay===30){ setTab('home'); }
+      };
+    }
+  }
+
+  function downloadJournal(){
+    var lines = ['Your 30 day journey',''];
+    if(state.startDate){ lines.push('Started on '+state.startDate); lines.push(''); }
+    for(var d=1; d<=30; d++){
+      var e = state.days[d];
+      if(e && (e.reflection || e.mood)){
+        lines.push('Day '+d+' (mood '+(e.mood||'-')+'/5): '+(e.reflection||''));
+      }
+    }
+    var total = 0, impulse = 0;
+    for(var k in state.money){
+      (state.money[k]||[]).forEach(function(en){
+        total += Number(en.amount)||0;
+        if(en.cat==='impulse') impulse += Number(en.amount)||0;
+      });
+    }
+    if(total > 0){
+      lines.push('');
+      lines.push('Logged spending: $'+total.toFixed(2)+' total, $'+impulse.toFixed(2)+' of it impulse.');
+    }
+    var blob = new Blob([lines.join('\n')], {type:'text/plain'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'my-30-day-journal.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function setTab(tab){
+    activeTab = tab;
+    document.querySelectorAll('.nav-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-tab')===tab);
+    });
+    renderTab();
+  }
+
+  document.querySelectorAll('.nav-btn').forEach(function(btn){
+    btn.onclick = function(){ setTab(btn.getAttribute('data-tab')); };
+  });
+
+  document.getElementById('prev-day').onclick = function(){ if(currentDay>1){ currentDay--; save(); render(); } };
+  document.getElementById('next-day').onclick = function(){ if(currentDay<30){ currentDay++; save(); render(); } };
+  document.getElementById('preview-day-input').onchange = function(e){
+    var v = parseInt(e.target.value,10);
+    if(isNaN(v)) v = 1;
+    currentDay = Math.min(30, Math.max(1, v));
+    save();
+    render();
+  };
+  document.getElementById('reset-demo').onclick = resetAll;
+
+  function startBreathing(){
+    var circle = document.getElementById('breathing-circle');
+    var breathIn = true;
+    circle.textContent = 'Breathe in';
+    circle.classList.add('expand');
+    breathTimer = setInterval(function(){
+      breathIn = !breathIn;
+      circle.textContent = breathIn ? 'Breathe in' : 'Breathe out';
+      circle.classList.toggle('expand', breathIn);
+    }, 4000);
+  }
+  function stopBreathing(){
+    if(breathTimer){ clearInterval(breathTimer); breathTimer = null; }
+  }
+
+  document.getElementById('sos-btn').onclick = function(){
+    document.getElementById('sos-overlay').style.display = 'flex';
+    document.getElementById('sos-title').textContent = "It's okay. Let's just get through today.";
+    document.getElementById('sos-permission').style.display = 'block';
+    // Always bring the breathing circle back — a previous hard day used to hide it for good.
+    document.getElementById('breathing-circle').style.display = 'flex';
+    document.getElementById('sos-line').textContent = COMPASSION[Math.floor(Math.random()*COMPASSION.length)];
+    startBreathing();
+  };
+  document.getElementById('sos-close').onclick = function(){
+    document.getElementById('sos-overlay').style.display = 'none';
+    stopBreathing();
+  };
+  document.getElementById('sos-permission').onclick = function(){
+    stopBreathing();
+    document.getElementById('breathing-circle').style.display = 'none';
+    document.getElementById('sos-title').textContent = "That's enough for today.";
+    document.getElementById('sos-line').textContent = "We'll be here tomorrow.";
+    document.getElementById('sos-permission').style.display = 'none';
+  };
+
+  // ---------- Keeping it on the phone ----------
+  // Chrome hands us a prompt we may fire from a button; Safari has none,
+  // so there the button just opens the written steps.
+  var installPrompt = null;
+
+  function runningAsApp(){
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    installPrompt = e;
+    var b = document.getElementById('install-btn');
+    if(b) b.classList.add('show');
+  });
+  window.addEventListener('appinstalled', function(){
+    installPrompt = null;
+    var b = document.getElementById('install-btn');
+    if(b) b.classList.remove('show');
+  });
+  function doInstall(){
+    if(installPrompt){
+      installPrompt.prompt();
+      installPrompt = null;
+      var b = document.getElementById('install-btn');
+      if(b) b.classList.remove('show');
+      return;
+    }
+    document.getElementById('about-panel').classList.add('open');
+  }
+
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js').catch(function(){});
+    });
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

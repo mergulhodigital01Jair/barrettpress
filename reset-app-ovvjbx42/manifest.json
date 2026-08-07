@@ -1,0 +1,15 @@
+{
+  "name": "Burned Out & Broke — 30-Day Reset Companion",
+  "short_name": "30-Day Reset",
+  "description": "Your daily companion for the 30-day reset: check-in, prompt, three small things, and money log.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6ECDD",
+  "theme_color": "#F6ECDD",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
