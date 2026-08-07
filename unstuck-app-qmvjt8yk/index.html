@@ -128,6 +128,26 @@
   .home-footer .disclaimer{ font-size:11px; color: var(--text-faint); line-height:1.5; margin: 0 0 10px; padding: 0 6px; }
 
   /* ---------- Guide / Info panels ---------- */
+  .install-btn{
+    display:none;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding: 13px 16px;
+    margin: 2px 0 12px;
+    border-radius: 14px;
+    background: rgba(227,174,92,0.10);
+    border: 1px solid rgba(227,174,92,0.38);
+    color: var(--accent-gold);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor:pointer;
+  }
+  .install-btn.show{ display:flex; }
+  .install-btn:active{ background: rgba(227,174,92,0.18); }
+
   .guide-toggle{
     display:block;
     width:100%;
@@ -401,6 +421,21 @@
       </svg>
       <div class="wordmark">The Unstuck System</div>
       <div class="tagline">companion</div>
+    </div>
+
+    <button class="install-btn" id="installBtn" onclick="doInstall()">Keep this on my phone</button>
+    <div class="info-panel" id="infoInstall">
+      <div class="info-title">Keeping it one tap away</div>
+      <p>This works like an app, but it lives in your browser — so it only becomes a one-tap thing once you save it to your phone. Takes about ten seconds.</p>
+      <div class="info-title">iPhone</div>
+      <div class="info-step"><b>1.</b><span>You need Safari for this step, not Chrome.</span></div>
+      <div class="info-step"><b>2.</b><span>Tap the share button at the bottom — the square with the arrow pointing up.</span></div>
+      <div class="info-step"><b>3.</b><span>Scroll down the list and tap <b>Add to Home Screen</b>, then <b>Add</b>.</span></div>
+      <div class="info-title">Android</div>
+      <div class="info-step"><b>1.</b><span>Tap the three dots at the top right of Chrome.</span></div>
+      <div class="info-step"><b>2.</b><span>Tap <b>Install app</b> (sometimes called <b>Add to Home screen</b>) and confirm.</span></div>
+      <div class="info-step"><b>3.</b><span>If you don't see the icon on your home screen, don't worry — nothing went wrong. Android usually files new apps in your app list instead. Swipe up from the middle of your home screen, search for <b>Unstuck</b>, and it's there.</span></div>
+      <p><b>Either way, you don't have to do this at all.</b> The link works fine on its own — bookmark it and you've lost nothing.</p>
     </div>
 
     <button class="guide-toggle" onclick="toggleGuide()">New here? Read this first <span class="guide-arrow" id="guideArrow">›</span></button>
@@ -968,9 +1003,51 @@
     showResetStep(3);
   }
 
+  // ---------- Install to home screen ----------
+  // Chrome hands us an install prompt we're allowed to fire from a button;
+  // Safari has no such thing, so there we show written steps instead.
+  let installPrompt = null;
+
+  function runningAsApp(){
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+  function showInstallBtn(show){
+    document.getElementById('installBtn').classList.toggle('show', !!show);
+  }
+  window.addEventListener('beforeinstallprompt', (e)=>{
+    e.preventDefault();
+    installPrompt = e;
+    showInstallBtn(true);
+  });
+  window.addEventListener('appinstalled', ()=>{
+    installPrompt = null;
+    showInstallBtn(false);
+    document.getElementById('infoInstall').classList.remove('open');
+  });
+  async function doInstall(){
+    if(installPrompt){
+      installPrompt.prompt();
+      try{ await installPrompt.userChoice; }catch(e){}
+      installPrompt = null;
+      showInstallBtn(false);
+      return;
+    }
+    // No prompt available (iPhone, or already handled) — open the written steps.
+    toggleInfo('infoInstall');
+  }
+
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    });
+  }
+
   // ---------- init ----------
   (function init(){
     const store = loadStore();
+
+    // Offer the home-screen step, unless they're already running it as an app
+    if(!runningAsApp()) showInstallBtn(true);
 
     // Days marked in Your Progress
     if(store.days && typeof store.days === 'object') streakDays = store.days;
