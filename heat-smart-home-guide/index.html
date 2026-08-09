@@ -479,7 +479,7 @@ footer small { grid-column:1/-1; padding-top:30px; border-top:1px solid rgba(255
       <div class="mobile-cta"><div><small>Instant access</small><b>€17,90</b></div><a href="#offer" data-checkout-link>Get the guide →</a></div>
     </main>
 <script>
-  const hotmartCheckoutUrl = "https://pay.hotmart.com/K107084774M";
+  const hotmartCheckoutUrl = "https://pay.hotmart.com/K107084774M?checkoutMode=10";
   if (/^https?:\/\//i.test(hotmartCheckoutUrl)) {
     document.querySelectorAll("[data-checkout-link]").forEach((button) => {
       button.href = hotmartCheckoutUrl;
