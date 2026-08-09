@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A practical guide for European households preparing for extreme heat and drought.">
+  <title>Heat-Smart Home Guide for Europe | Barrettpress</title>
+  <!-- HOTMART: link de checkout ativo no fim deste arquivo (const hotmartCheckoutUrl). -->
+  <style>
+:root {
+  --ink: #10343a;
+  --teal: #1f6b67;
+  --gold: #c8a469;
+  --cream: #f4f0e8;
+  --paper: #fffdf8;
+  --text: #273435;
+  --muted: #697675;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--text); font-family: Inter, Arial, sans-serif; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.site-header { height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; border-bottom: 1px solid rgba(16,52,58,.12); background: rgba(255,253,248,.94); position: sticky; top: 0; z-index: 30; backdrop-filter: blur(14px); }
+.brand { display: flex; align-items: center; gap: 11px; color: var(--ink); font-size: 13px; font-weight: 800; letter-spacing: .18em; }
+.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--gold); border-radius: 50%; font-family: Georgia, serif; font-size: 18px; letter-spacing: 0; }
+nav { display: flex; gap: 32px; color: #4e6061; font-size: 13px; }
+nav a:hover { color: var(--teal); }
+
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 56px; padding: 0 26px; border-radius: 4px; background: var(--ink); color: white; font-size: 14px; font-weight: 750; letter-spacing: .01em; box-shadow: 0 14px 30px rgba(16,52,58,.18); transition: transform .2s, background .2s; }
+.button:hover { transform: translateY(-2px); background: #17464c; }
+.button-small { min-height: 42px; padding: 0 18px; font-size: 12px; box-shadow: none; }
+.text-link { color: var(--cream); font-size: 13px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.4); padding-bottom: 4px; }
+.text-link.dark { color: var(--ink); border-color: rgba(16,52,58,.3); }
+
+.hero { min-height: 760px; display: grid; grid-template-columns: 1.05fr .95fr; background: var(--ink); color: white; overflow: hidden; }
+.hero-copy { padding: 110px 4vw 84px 7vw; position: relative; z-index: 2; }
+.eyebrow { margin: 0 0 26px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .19em; }
+.eyebrow.dark { color: #a36f38; }
+.hero h1 { max-width: 720px; margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(52px, 5.6vw, 82px); font-weight: 400; line-height: .98; letter-spacing: -.045em; }
+.hero h1 em { color: #e2c18c; font-weight: 400; }
+.hero-lead { max-width: 650px; margin: 34px 0 36px; color: #c9d5d3; font-size: 17px; line-height: 1.7; }
+.hero-actions { display: flex; align-items: center; gap: 28px; }
+.hero-copy .button { background: #e9d1a7; color: var(--ink); }
+.trust-row { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px; color: #b9c9c7; font-size: 11px; }
+.trust-row b { color: #e2c18c; }
+
+.hero-visual { position: relative; min-height: 760px; background: linear-gradient(145deg,#d9c29d,#eee3cf 52%,#b9aa8d); display: grid; place-items: center; }
+.hero-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(16,52,58,.12),transparent 35%), radial-gradient(circle at 70% 16%,rgba(255,255,255,.58),transparent 40%); }
+.sun-disc { position: absolute; width: 420px; height: 420px; border-radius: 50%; background: rgba(247,220,170,.7); top: 50px; right: 6%; }
+.book-shadow { position: absolute; width: 390px; height: 560px; border-radius: 50%; filter: blur(30px); background: rgba(54,48,37,.3); transform: translate(32px,32px) rotate(4deg); }
+.book-cover { position: relative; z-index: 2; width: min(410px,70%); max-height: 610px; object-fit: cover; box-shadow: -20px 28px 60px rgba(37,39,34,.42); transform: rotate(3deg); border-radius: 2px; }
+.floating-note { position: absolute; z-index: 4; display: flex; flex-direction: column; min-width: 130px; padding: 15px 18px; background: rgba(255,253,248,.94); color: var(--ink); box-shadow: 0 16px 35px rgba(16,52,58,.18); border-left: 3px solid var(--gold); }
+.floating-note b { font-family: Georgia, serif; font-size: 23px; }
+.floating-note span { font-size: 9px; text-transform: uppercase; letter-spacing: .13em; color: var(--muted); }
+.note-one { left: 5%; top: 22%; }
+.note-two { right: 6%; bottom: 18%; }
+
+.proof-strip { display: grid; grid-template-columns: repeat(4,1fr); padding: 34px 7vw; background: #eadcc5; border-bottom: 1px solid rgba(16,52,58,.11); }
+.proof-strip div { display: flex; align-items: baseline; justify-content: center; gap: 10px; border-right: 1px solid rgba(16,52,58,.16); }
+.proof-strip div:last-child { border-right: 0; }
+.proof-strip b { font-family: Georgia,serif; color: var(--ink); font-size: 28px; font-weight: 400; }
+.proof-strip span { color: #5e6968; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+
+.opening { padding: 115px 7vw 120px; text-align: center; }
+.section-label { color: #a16e37; font-size: 10px; font-weight: 800; letter-spacing: .2em; }
+.opening h2,.first-look h2,.offer-preview h2 { margin: 20px auto; color: var(--ink); font-family: Georgia,serif; font-size: clamp(40px,4.8vw,66px); font-weight: 400; line-height: 1.08; letter-spacing: -.035em; }
+.opening>p { max-width: 760px; margin: 0 auto; color: var(--muted); font-size: 17px; line-height: 1.75; }
+.opening-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1180px; margin: 70px auto 0; text-align: left; }
+.opening-grid article { padding: 34px; border: 1px solid #ddd5c7; background: #fbf8f1; }
+.opening-grid span { color: var(--gold); font-family: Georgia,serif; font-size: 16px; }
+.opening-grid h3 { color: var(--ink); font-family: Georgia,serif; font-size: 24px; font-weight: 400; }
+.opening-grid p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+.first-look { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 7vw; padding: 110px 7vw; background: var(--cream); }
+.photo-frame { position: relative; }
+.photo-frame::before { content:''; position:absolute; inset: -18px 18px 18px -18px; border: 1px solid var(--gold); }
+.photo-frame img { position: relative; aspect-ratio: 1.35; object-fit: cover; }
+.first-look h2 { margin-left: 0; }
+.first-look p:not(.eyebrow) { color: var(--muted); line-height: 1.75; font-size: 16px; max-width: 520px; }
+
+.contents-section { padding: 120px 7vw; background: #fffdf8; }
+.contents-heading { display:grid; grid-template-columns: 1.2fr .8fr; align-items:end; gap:7vw; max-width:1180px; margin:0 auto 60px; }
+.contents-heading h2,.preview-copy h2,.made-for h2,.how-copy h2,.faq-heading h2,.final-cta h2 { margin:16px 0 0; color:var(--ink); font-family:Georgia,serif; font-size:clamp(40px,4.5vw,64px); font-weight:400; line-height:1.08; letter-spacing:-.035em; }
+.contents-heading>p { color:var(--muted); font-size:16px; line-height:1.75; }
+.bento-grid { display:grid; grid-template-columns:1.1fr .9fr; grid-template-rows:auto auto; gap:22px; max-width:1180px; margin:auto; }
+.bento { position:relative; overflow:hidden; min-height:360px; border:1px solid #ded5c6; background:var(--cream); }
+.bento h3 { margin:12px 0; color:var(--ink); font-family:Georgia,serif; font-size:30px; font-weight:400; line-height:1.1; }
+.bento p { color:var(--muted); font-size:14px; line-height:1.65; }
+.bento-image img { width:100%; height:100%; object-fit:cover; }
+.bento-caption { position:absolute; left:0; right:0; bottom:0; padding:30px; color:white; background:linear-gradient(transparent,rgba(10,38,43,.92)); }
+.bento-caption h3,.bento-caption p { color:white; max-width:500px; }
+.bento-caption span,.card-number { color:var(--gold); font:16px Georgia,serif; }
+.bento-list { padding:44px; }
+.bento-list ul { margin:30px 0 0; padding:0; list-style:none; }
+.bento-list li { padding:15px 0 15px 26px; border-top:1px solid #d7cebf; color:#4f6060; font-size:14px; position:relative; }
+.bento-list li::before { content:'✓'; position:absolute; left:0; color:var(--teal); font-weight:800; }
+.bento-photo { display:grid; grid-template-columns:1fr 1fr; background:#eee4d4; }
+.bento-photo img { width:100%; height:100%; object-fit:cover; }
+.bento-photo>div { padding:38px 32px; }
+.bento-dark { padding:44px; background:var(--ink); border-color:var(--ink); }
+.bento-dark h3 { color:white; font-size:34px; }
+.bento-dark p { color:#c6d2d0; }
+.safety-note { position:absolute; left:44px; right:44px; bottom:36px; padding-top:18px; border-top:1px solid rgba(255,255,255,.18); color:#d9c394; font-size:10px; letter-spacing:.08em; }
+
+.preview-section { display:grid; grid-template-columns:.8fr 1.2fr; gap:5vw; align-items:center; min-height:760px; padding:110px 7vw; background:var(--ink); color:white; overflow:hidden; }
+.preview-copy h2 { color:white; }
+.preview-copy>p:not(.eyebrow) { max-width:520px; color:#c4d0ce; font-size:16px; line-height:1.75; }
+.mini-benefits { display:flex; flex-direction:column; gap:13px; margin-top:28px; color:#e1c690; font-size:13px; }
+.page-stack { position:relative; min-height:590px; }
+.page { position:absolute; width:43%; box-shadow:0 24px 50px rgba(0,0,0,.38); border:4px solid white; }
+.page-a { left:0; top:80px; transform:rotate(-7deg); }
+.page-b { left:29%; top:0; z-index:2; transform:rotate(1deg); }
+.page-c { right:0; top:90px; transform:rotate(8deg); }
+
+.made-for { padding:115px 7vw; text-align:center; background:var(--cream); }
+.made-for h2 { max-width:950px; margin:16px auto 60px; }
+.audience-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; max-width:1180px; margin:auto; background:#d5ccbd; }
+.audience-grid article { padding:45px 38px; text-align:left; background:#faf7f0; }
+.audience-grid b { color:var(--gold); font:18px Georgia,serif; }
+.audience-grid h3 { color:var(--ink); font:400 25px Georgia,serif; }
+.audience-grid p { color:var(--muted); font-size:14px; line-height:1.65; }
+
+.how-section { display:grid; grid-template-columns:1fr 1fr; min-height:720px; background:white; }
+.how-photo img { width:100%; height:100%; object-fit:cover; }
+.how-copy { padding:100px 7vw; }
+.how-copy ol { margin:45px 0 0; padding:0; list-style:none; }
+.how-copy li { display:grid; grid-template-columns:48px 1fr; gap:22px; padding:23px 0; border-top:1px solid #ddd6ca; }
+.how-copy li>span { display:grid; place-items:center; width:40px; height:40px; border:1px solid var(--gold); border-radius:50%; color:#986735; font:17px Georgia,serif; }
+.how-copy h3 { margin:0 0 7px; color:var(--ink); font:400 22px Georgia,serif; }
+.how-copy li p { margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
+
+.offer-preview { padding:120px 7vw; background:#e9ddca; }
+.offer-card { display:grid; grid-template-columns:.72fr 1.28fr; max-width:1120px; margin:auto; background:#fffdf8; box-shadow:0 32px 80px rgba(67,55,38,.15); }
+.offer-cover { padding:55px; background:var(--ink); display:grid; place-items:center; }
+.offer-cover img { max-height:590px; box-shadow:-15px 20px 34px rgba(0,0,0,.28); transform:rotate(-2deg); }
+.offer-copy { padding:65px 70px; }
+.offer-copy h2 { margin-left:0; font-size:46px; }
+.offer-copy>p { color:var(--muted); line-height:1.65; }
+.offer-list { display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; margin:30px 0; padding:26px 0; list-style:none; border-top:1px solid #ddd4c6; border-bottom:1px solid #ddd4c6; }
+.offer-list li { padding-left:20px; color:#536160; font-size:12px; position:relative; }
+.offer-list li::before { content:'✓'; position:absolute; left:0; color:var(--teal); font-weight:800; }
+.price { display:flex; flex-direction:column; margin:28px 0 20px; }
+.price small { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .17em; }
+.price strong { color: var(--ink); font-family: Georgia,serif; font-size: 58px; font-weight: 400; }
+.button-wide { width:100%; }
+.microcopy { font-size: 10px!important; }
+.guarantee { display:grid; grid-template-columns:90px 1fr; align-items:center; gap:28px; max-width:760px; margin:46px auto 0; }
+.guarantee-seal { display:grid; place-items:center; width:82px; height:82px; border:1px solid var(--ink); border-radius:50%; color:var(--ink); font:28px Georgia,serif; }
+.guarantee-seal span { display:block; margin-top:-25px; font:7px Arial,sans-serif; letter-spacing:.18em; }
+.guarantee h3 { margin:0 0 7px; color:var(--ink); font:400 24px Georgia,serif; }
+.guarantee p { margin:0; color:#5e6766; font-size:13px; line-height:1.6; }
+
+.faq-section { display:grid; grid-template-columns:.8fr 1.2fr; gap:7vw; padding:120px 7vw; background:#fffdf8; }
+.faq-list details { border-top:1px solid #d9d1c3; padding:23px 0; }
+.faq-list details:last-child { border-bottom:1px solid #d9d1c3; }
+.faq-list summary { cursor:pointer; color:var(--ink); font:400 19px Georgia,serif; list-style:none; }
+.faq-list summary::after { content:'+'; float:right; color:#9a6b38; }
+.faq-list details[open] summary::after { content:'−'; }
+.faq-list p { color:var(--muted); font-size:13px; line-height:1.65; max-width:680px; }
+
+.legal-section { padding:100px 7vw; background:var(--cream); }
+.legal-heading { max-width:900px; margin:0 auto 46px; text-align:center; }
+.legal-heading h2 { margin:16px 0 14px; color:var(--ink); font-family:Georgia,serif; font-size:clamp(36px,4vw,54px); font-weight:400; line-height:1.08; letter-spacing:-.03em; }
+.legal-heading p { margin:0 auto; max-width:680px; color:var(--muted); font-size:14px; line-height:1.7; }
+.legal-list { max-width:980px; margin:auto; }
+.legal-list details { scroll-margin-top:100px; border-top:1px solid #d1c7b7; padding:22px 0; }
+.legal-list details:last-child { border-bottom:1px solid #d1c7b7; }
+.legal-list summary { cursor:pointer; color:var(--ink); font:400 20px Georgia,serif; list-style:none; }
+.legal-list summary::after { content:'+'; float:right; color:#9a6b38; }
+.legal-list details[open] summary::after { content:'−'; }
+.legal-list p { margin:14px 0 0; color:#5d6a69; font-size:13px; line-height:1.75; }
+.legal-list a { color:var(--teal); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+.final-cta { padding:120px 7vw; text-align:center; background:var(--ink); color:white; }
+.final-cta h2 { color:white; font-size:clamp(48px,5.5vw,78px); }
+.final-cta>p:not(.eyebrow) { color:#c6d1cf; margin:24px 0 30px; }
+.final-cta .button { background:#ead0a3; color:var(--ink); }
+
+footer { display:grid; grid-template-columns:1fr 1fr auto; align-items:center; gap:32px; padding:58px 6vw 78px; background:#0b292e; color:#b9c5c3; }
+.footer-brand { color:white; }
+footer p { margin:0; max-width:360px; font-size:11px; line-height:1.6; }
+footer>div { display:flex; flex-wrap:wrap; gap:14px 22px; font-size:11px; }
+footer small { grid-column:1/-1; padding-top:30px; border-top:1px solid rgba(255,255,255,.12); font-size:9px; }
+.mobile-cta { display:none; }
+
+@media (max-width: 900px) {
+  nav,.site-header>.button { display:none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding: 80px 7vw 70px; }
+  .hero-visual { min-height: 620px; }
+  .proof-strip { grid-template-columns: repeat(2,1fr); gap: 26px 0; }
+  .proof-strip div:nth-child(2) { border-right:0; }
+  .opening-grid,.first-look,.contents-heading,.preview-section,.how-section,.faq-section,.offer-card { grid-template-columns:1fr; }
+  .bento-grid { grid-template-columns:1fr; grid-template-rows:auto; }
+  .page-stack { min-height:650px; }
+  .audience-grid { grid-template-columns:1fr; }
+  .how-photo { height:520px; }
+  .offer-cover { padding:60px 15vw; }
+  footer { grid-template-columns:1fr; text-align:center; }
+  footer .brand { justify-content:center; }
+  footer>div { justify-content:center; }
+}
+
+@media (max-width: 560px) {
+  .site-header { height: 68px; }
+  .hero h1 { font-size: 48px; }
+  .hero-actions { align-items:flex-start; flex-direction:column; }
+  .hero-visual { min-height: 520px; }
+  .floating-note { min-width: 112px; padding: 11px 13px; }
+  .proof-strip { padding: 28px 5vw; }
+  .proof-strip div { align-items:center; flex-direction:column; gap:2px; }
+  .proof-strip span { font-size: 8px; }
+  .opening,.first-look,.offer-preview,.contents-section,.preview-section,.made-for,.faq-section,.legal-section { padding:80px 7vw; }
+  .bento-photo { grid-template-columns:1fr; }
+  .bento-photo img { height:230px; }
+  .page-stack { min-height:460px; margin-top:30px; }
+  .page { width:52%; }
+  .page-a { top:70px; }
+  .page-b { left:24%; }
+  .page-c { top:80px; }
+  .how-photo { height:380px; }
+  .how-copy { padding:80px 7vw; }
+  .offer-copy { padding:42px 28px; }
+  .offer-list { grid-template-columns:1fr; }
+  .guarantee { grid-template-columns:1fr; text-align:center; }
+  .guarantee-seal { margin:auto; }
+  footer { padding-bottom:120px; }
+  .mobile-cta { position:fixed; z-index:40; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:#fffdf8; border-top:1px solid #d7cdbc; box-shadow:0 -10px 30px rgba(16,52,58,.12); }
+  .mobile-cta div { display:flex; flex-direction:column; }
+  .mobile-cta small { color:var(--muted); font-size:8px; text-transform:uppercase; letter-spacing:.12em; }
+  .mobile-cta b { color:var(--ink); font:22px Georgia,serif; }
+  .mobile-cta a { padding:13px 16px; background:var(--ink); color:white; border-radius:3px; font-size:12px; font-weight:700; }
+}
+
+
+.brand-logo { display:block; width:210px; max-width:44vw; height:auto; }
+.site-header .brand { flex:0 0 auto; }
+.footer-brand { width:max-content; padding:8px 12px; border-radius:4px; background:#fbf7f0; }
+.footer-brand .brand-logo { width:190px; max-width:100%; }
+.support-email { display:inline-block; margin-top:8px; color:#ead0a3; font-weight:700; letter-spacing:.02em; }
+.support-email:hover { color:#fff; text-decoration:underline; }
+@media (max-width:560px) { .brand-logo { width:175px; max-width:58vw; } }
+
+</style>
+</head>
+<body>
+<main>
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Barrettpress home">
+          <img class="brand-logo" src="img/barrettpress-logo.png" alt="Barrettpress">
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#inside">Inside the guide</a>
+          <a href="#why">Why it matters</a>
+          <a href="#offer">Get the guide</a>
+        </nav>
+        <a class="button button-small" href="#offer" data-checkout-link>Get instant access</a>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">THE 2026 PRACTICAL EDITION · MADE FOR EUROPEAN HOMES</p>
+          <h1>A calmer, smarter way to prepare your home for <em>extreme heat.</em></h1>
+          <p class="hero-lead">
+            Practical, affordable steps to keep heat out, organise your household,
+            use water wisely and know when it is time to get help — even without air conditioning.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#offer" data-checkout-link>Get the guide for €17,90 <span>→</span></a>
+            <a class="text-link" href="#inside">See what&apos;s inside ↓</a>
+          </div>
+          <div class="trust-row" aria-label="Purchase details">
+            <span><b>✓</b> Instant PDF access</span>
+            <span><b>✓</b> 7-day guarantee</span>
+            <span><b>✓</b> Secure checkout</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="The Heat-Smart Home Guide for Europe cover">
+          <div class="sun-disc" ></div>
+          <div class="book-shadow" ></div>
+          <img class="book-cover" src="img/heat-cover-3d.webp" alt="Cover of The Heat-Smart Home Guide for Europe" >
+          <div class="floating-note note-one"><b>24</b><span>premium pages</span></div>
+          <div class="floating-note note-two"><b>72h</b><span>home plan</span></div>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Guide highlights">
+        <div><b>24</b><span>clear, visual pages</span></div>
+        <div><b>15</b><span>practical home topics</span></div>
+        <div><b>72h</b><span>preparedness plan</span></div>
+        <div><b>A4</b><span>print-friendly format</span></div>
+      </section>
+
+      <section class="opening" id="why">
+        <div class="section-label">WHY THIS GUIDE, WHY NOW</div>
+        <h2>European summers are changing.<br>Most homes were not built for it.</h2>
+        <p>
+          When several hot days arrive together, stone, brick and glass can hold heat long after sunset.
+          This guide organises practical guidance from trusted public sources into a simple household plan.
+          Sources and emergency references are included inside the guide.
+        </p>
+        <div class="opening-grid">
+          <article><span>01</span><h3>Keep heat outside</h3><p>Shade, close and ventilate at the right times instead of guessing.</p></article>
+          <article><span>02</span><h3>Care for people</h3><p>Plan for older adults, children, medicines, pets and vulnerable neighbours.</p></article>
+          <article><span>03</span><h3>Prepare calmly</h3><p>Build a cool zone, a 72-hour kit and clear triggers for seeking help.</p></article>
+        </div>
+      </section>
+
+      <section class="first-look" id="inside">
+        <div class="photo-frame"><img src="img/heat-photo-plan.webp" alt="A family preparing a household heat plan" ></div>
+        <div>
+          <p class="eyebrow dark">PRACTICAL BY DESIGN</p>
+          <h2>Less theory.<br>More useful action.</h2>
+          <p>The guide is structured for quick reading during a hot-weather alert, with calm explanations, visual checklists and a household plan that keeps decisions clear.</p>
+          <a class="text-link dark" href="#offer">Explore the complete guide →</a>
+        </div>
+      </section>
+
+      <section class="contents-section">
+        <div class="contents-heading">
+          <div>
+            <p class="eyebrow dark">ONE GUIDE. A COMPLETE HOME PLAN.</p>
+            <h2>A practical plan to help your household feel more prepared.</h2>
+          </div>
+          <p>Short, practical sections make it easy to find the right action before, during and after a heat alert.</p>
+        </div>
+        <div class="bento-grid">
+          <article class="bento bento-image">
+            <img src="img/heat-bento-bedroom.webp" alt="A cool bedroom prepared for a hot night" >
+            <div class="bento-caption"><span>01</span><h3>Cool the home by the clock</h3><p>Know when to close, shade, ventilate and prepare the sleeping space.</p></div>
+          </article>
+          <article class="bento bento-list">
+            <span class="card-number">02</span>
+            <h3>Care for the whole household</h3>
+            <ul>
+              <li>Hydration without guesswork</li>
+              <li>Older adults and vulnerable people</li>
+              <li>Babies, children and pets</li>
+              <li>Food, medicines and daily routines</li>
+            </ul>
+          </article>
+          <article class="bento bento-photo">
+            <img src="img/heat-bento-kit.webp" alt="Household supplies for a heatwave plan" >
+            <div><span class="card-number">03</span><h3>Build a 72-hour kit</h3><p>A clear, adaptable checklist for water, power, medicines and special needs.</p></div>
+          </article>
+          <article class="bento bento-dark">
+            <span class="card-number">04</span>
+            <h3>Know when heat becomes an emergency</h3>
+            <p>Review warning signs described by public health authorities and learn when to contact local emergency services.</p>
+            <div class="safety-note">Clear guidance · Responsible language · Official sources</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="preview-section">
+        <div class="preview-copy">
+          <p class="eyebrow">LOOK INSIDE</p>
+          <h2>Designed to be read quickly — and used immediately.</h2>
+          <p>Premium editorial design meets practical household planning. Print the checklists, keep the guide on your phone, or share key pages with family and carers.</p>
+          <div class="mini-benefits">
+            <span>✓ Clear visual hierarchy</span>
+            <span>✓ Print-friendly A4 pages</span>
+            <span>✓ Plain, reassuring English</span>
+          </div>
+        </div>
+        <div class="page-stack" aria-label="Preview pages from the guide">
+          <img class="page page-a" src="img/heat-page-a.webp" alt="30-minute heat plan page preview" >
+          <img class="page page-b" src="img/heat-page-b.webp" alt="Heat emergency warning signs page preview" >
+          <img class="page page-c" src="img/heat-page-c.webp" alt="One-page heatwave checklist preview" >
+        </div>
+      </section>
+
+      <section class="made-for">
+        <p class="eyebrow dark">MADE FOR REAL HOMES</p>
+        <h2>Especially useful when air conditioning is not part of everyday life.</h2>
+        <div class="audience-grid">
+          <article><b>01</b><h3>Apartments & rented homes</h3><p>Low-cost, reversible ideas that respect the limits of rented spaces.</p></article>
+          <article><b>02</b><h3>Families & carers</h3><p>A shared plan for children, older relatives, neighbours and pets.</p></article>
+          <article><b>03</b><h3>Hot, dry communities</h3><p>Heat, drought, water restrictions, outages and smoke in one place.</p></article>
+        </div>
+      </section>
+
+      <section class="how-section">
+        <div class="how-photo"><img src="img/heat-photo-plan.webp" alt="Household members making a heat plan together" ></div>
+        <div class="how-copy">
+          <p class="eyebrow dark">HOW IT WORKS</p>
+          <h2>Prepare in one calm sitting.</h2>
+          <ol>
+            <li><span>1</span><div><h3>Read the essentials</h3><p>Understand how heat enters the home and what changes across the day.</p></div></li>
+            <li><span>2</span><div><h3>Set up your plan</h3><p>Choose a cool zone, prepare supplies and assign household check-ins.</p></div></li>
+            <li><span>3</span><div><h3>Keep it ready</h3><p>Save the quick checklist and follow current local alerts when heat arrives.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="offer-preview" id="offer">
+        <div class="offer-card">
+          <div class="offer-cover"><img src="img/heat-cover-3d.webp" alt="The Heat-Smart Home Guide cover" ></div>
+          <div class="offer-copy">
+            <p class="eyebrow dark">INSTANT DIGITAL ACCESS</p>
+            <h2>The Heat-Smart Home Guide for Europe</h2>
+            <p>Complete 24-page A4 guide · English edition · Download immediately after purchase.</p>
+            <ul class="offer-list">
+              <li>Complete heat-smart home strategy</li>
+              <li>72-hour household kit checklist</li>
+              <li>Emergency and relocation guidance</li>
+              <li>Printable one-page action checklist</li>
+            </ul>
+            <div class="price"><small>One-time payment</small><strong>€17,90</strong></div>
+            <a class="button button-wide" href="#offer" data-checkout-link>Continue to secure checkout <span>→</span></a>
+            <p class="microcopy">Secure payment through Hotmart · Immediate delivery</p>
+          </div>
+        </div>
+        <div class="guarantee">
+          <div class="guarantee-seal">7<span>DAYS</span></div>
+          <div><h3>Try it with a 7-day guarantee.</h3><p>Read the guide and explore the practical tools. If it is not right for you, request a refund within seven days under the checkout guarantee.</p></div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="faq-heading"><p class="eyebrow dark">QUESTIONS, ANSWERED</p><h2>Before you download.</h2></div>
+        <div class="faq-list">
+          <details open><summary>Is this guide only for southern Europe?</summary><p>No. It was created for European households generally, with particular value in homes and regions that are less accustomed to prolonged heat.</p></details>
+          <details><summary>Do I need air conditioning?</summary><p>No. The guide focuses heavily on shading, timing ventilation, air movement, cool zones and practical planning without relying on air conditioning.</p></details>
+          <details><summary>Is this medical advice?</summary><p>No. It is an educational household guide based on trusted public information. Current local health and emergency advice always takes priority.</p></details>
+          <details><summary>How will I receive it?</summary><p>After secure payment through Hotmart, you receive immediate access to the English-language PDF. It works on phones, tablets and computers and can be printed in A4.</p></details>
+          <details><summary>What does the 7-day guarantee mean?</summary><p>You may review the product and request a refund within seven days according to the terms shown at checkout.</p></details>
+        </div>
+      </section>
+
+      <section class="legal-section" id="legal">
+        <div class="legal-heading">
+          <p class="eyebrow dark">CLEAR TERMS · RESPONSIBLE INFORMATION</p>
+          <h2>Policies and important information.</h2>
+          <p>These short notices explain how the website, digital product, guarantee and educational content are handled. Last updated: 9 August 2026.</p>
+        </div>
+        <div class="legal-list">
+          <details id="privacy">
+            <summary>Privacy Policy</summary>
+            <p>This landing page does not directly collect personal information through forms. When a purchase is made, payment and delivery information is processed by Hotmart under its own privacy terms. If analytics or advertising technologies are enabled, limited device, browser and interaction data may be processed subject to applicable consent requirements. Questions about Barrettpress privacy practices may be sent to <a href="mailto:support@barrettpress.com">support@barrettpress.com</a>.</p>
+          </details>
+          <details id="terms">
+            <summary>Terms of Use</summary>
+            <p>The Heat-Smart Home Guide for Europe is a digital educational product supplied for personal, non-commercial use. Purchase does not transfer copyright or permission to reproduce, resell, share publicly or redistribute the guide. Product access, payment and delivery are completed through Hotmart. Local laws and the terms displayed at checkout continue to apply.</p>
+          </details>
+          <details id="refund">
+            <summary>Refund Policy</summary>
+            <p>The product is offered with a 7-day guarantee. A refund request may be submitted within seven days of purchase through the Hotmart support and refund process, subject to the conditions displayed at checkout and applicable consumer law. For assistance, contact <a href="mailto:support@barrettpress.com">support@barrettpress.com</a>.</p>
+          </details>
+          <details id="disclaimer">
+            <summary>Educational and Safety Disclaimer</summary>
+            <p>This guide provides general educational information and is not personalised medical, legal, engineering or emergency advice. Individual health needs, medicines, buildings, air quality, water restrictions and local risks vary. Follow current instructions from local authorities and qualified professionals. In an emergency, contact the appropriate local emergency service immediately.</p>
+          </details>
+          <details id="contact">
+            <summary>Contact</summary>
+            <p>Barrettpress provides independent digital publishing and customer support by email. For product access, refund or general enquiries, write to <a href="mailto:support@barrettpress.com">support@barrettpress.com</a>.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <p class="eyebrow">A BETTER PLAN STARTS BEFORE THE NEXT ALERT</p>
+        <h2>Prepare your home.<br>Support your everyday routine.</h2>
+        <p>One calm, practical guide. Instant access for €17,90.</p>
+        <a class="button" href="#offer" data-checkout-link>Get the guide now <span>→</span></a>
+      </section>
+
+      <footer>
+        <a class="brand footer-brand" href="#top"><img class="brand-logo" src="img/barrettpress-logo.png" alt="Barrettpress"></a>
+        <p>Independent digital publishing for practical, better-prepared living.<br><a class="support-email" href="mailto:support@barrettpress.com">support@barrettpress.com</a></p>
+        <div><a href="#inside">Inside the guide</a><a href="#offer">Get access</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="#refund">Refunds</a><a href="#disclaimer">Disclaimer</a><a href="#contact">Contact</a><a href="#top">Back to top ↑</a></div>
+        <small>© 2026 Barrettpress. Educational information only. Local official guidance takes priority.</small>
+      </footer>
+
+      <div class="mobile-cta"><div><small>Instant access</small><b>€17,90</b></div><a href="#offer" data-checkout-link>Get the guide →</a></div>
+    </main>
+<script>
+  const hotmartCheckoutUrl = "https://pay.hotmart.com/K107084774M";
+  if (/^https?:\/\//i.test(hotmartCheckoutUrl)) {
+    document.querySelectorAll("[data-checkout-link]").forEach((button) => {
+      button.href = hotmartCheckoutUrl;
+      button.target = "_blank";
+      button.rel = "noopener noreferrer";
+    });
+  }
+</script>
+</body>
+</html>
