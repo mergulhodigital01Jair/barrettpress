@@ -1,208 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Barrett Press — Practical guides for people carrying too much</title>
-<meta name="description" content="Barrett Press publishes short, practical guides for burnout, focus, and everyday life admin. Written by J. Barrett.">
-<link rel="canonical" href="https://barrettpress.com/">
-<meta property="og:title" content="Barrett Press">
-<meta property="og:description" content="Practical guides for people carrying too much.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://barrettpress.com/">
-<link rel="icon" type="image/webp" href="/assets/logo-icon.webp">
-<style>
-  :root{
-    --paper:#FBF7F0;
-    --ink:#221F1C;
-    --muted:#6E655B;
-    --rule:#E4DACB;
-    --clay:#A94F39;
-    --deep:#183544;
-    --gold:#E8D2A5;
-    --serif:"Iowan Old Style","Baskerville","Palatino Linotype",Georgia,"Times New Roman",serif;
-    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--sans);font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
-  .label{
-    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--muted);font-weight:500;
-  }
-
-  /* masthead */
-  header{padding:72px 0 40px;border-bottom:1px solid var(--rule)}
-  .masthead{
-    display:grid;grid-template-columns:1fr 0.92fr;gap:52px;align-items:center;
-  }
-  .masthead-art{
-    margin:0;border-radius:2px;overflow:hidden;
-    box-shadow:0 1px 0 rgba(34,31,28,.12);
-  }
-  .masthead-art img{
-    display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
-  }
-  .press-logo{margin:0}
-  .press-logo img{
-    display:block;height:auto;
-    width:min(78vw,360px);
-  }
-  .remit{
-    font-family:var(--serif);font-size:clamp(17px,2.4vw,21px);
-    color:var(--muted);margin:20px 0 0;max-width:34ch;line-height:1.45;
-  }
-  .est{margin-top:26px}
-
-  /* catalogue */
-  .cat{padding:8px 0 0}
-  .entry{
-    display:grid;grid-template-columns:216px 1fr;gap:44px;
-    padding:56px 0;border-bottom:1px solid var(--rule);align-items:start;
-  }
-  .plate{
-    aspect-ratio:3/4;border-radius:2px;position:relative;
-    box-shadow:0 1px 0 rgba(34,31,28,.12);overflow:hidden;
-  }
-  .plate--clay{background:var(--clay)}
-  .plate--deep{background:var(--deep)}
-  .plate--teal{background:#10343A}
-  .plate img{display:block;width:100%;height:100%;object-fit:cover}
-
-  .entry h2{
-    font-family:var(--serif);font-size:clamp(25px,3.6vw,33px);
-    line-height:1.2;margin:6px 0 0;letter-spacing:-.01em;
-  }
-  .sub{color:var(--muted);font-family:var(--serif);font-size:18px;margin:10px 0 0}
-  .entry p.body{margin:18px 0 0;max-width:52ch;color:#3B342E}
-  .meta{
-    display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-  }
-  .go{
-    display:inline-flex;align-items:center;gap:9px;margin-top:26px;
-    font-family:var(--serif);font-size:18px;color:var(--ink);
-    text-decoration:none;border-bottom:1px solid var(--ink);
-    padding-bottom:3px;transition:gap .18s ease,color .18s ease;
-  }
-  .go:hover{gap:15px}
-  .entry--clay .go:hover{color:var(--clay);border-color:var(--clay)}
-  .entry--deep .go:hover{color:var(--deep);border-color:var(--deep)}
-  .entry--teal .go:hover{color:#10343A;border-color:#10343A}
-  .go:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-
-  /* about */
-  .about{padding:60px 0;border-bottom:1px solid var(--rule)}
-  .about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:44px}
-  .about p{margin:0 0 16px;max-width:58ch;color:#3B342E}
-  .about p:last-child{margin-bottom:0}
-
-  footer{padding:48px 0 64px;font-size:14px;color:var(--muted)}
-  .fnav{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 22px}
-  .fnav a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-  .fnav a:hover{border-color:var(--ink)}
-  .mailto{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-  .disclaimer{margin:18px 0 0;font-size:12.5px;line-height:1.55;max-width:70ch}
-
-  @media (max-width:760px){
-    header{padding:52px 0 32px}
-    .masthead{grid-template-columns:1fr;gap:30px}
-    .entry{grid-template-columns:1fr;gap:26px;padding:44px 0}
-    .plate{width:172px;aspect-ratio:3/4}
-    .about-grid{grid-template-columns:1fr;gap:20px}
-  }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Short, practical digital guides for people carrying too much and still getting through the week.">
+  <title>Barrett Press — Practical guides for real life</title>
+  <style>
+    .brand img{display:block;width:178px;height:auto}.footer-brand img{width:145px}@media(max-width:800px){.brand img{width:145px}}
+    :root{--ink:#17253a;--paper:#f8f5ef;--line:rgba(23,37,58,.16)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}.announcement{min-height:36px;display:flex;align-items:center;justify-content:center;gap:11px;padding:8px 20px;background:var(--ink);color:#f9f3e8;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.dot{width:4px;height:4px;border-radius:50%;background:#e2b355}.header{max-width:1240px;padding:24px 36px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{display:inline-flex;align-items:center;gap:9px;font-size:30px;font-weight:800;letter-spacing:-.07em}.brand em{font-style:normal;font-weight:400}.mark{display:grid;place-items:center;width:30px;height:30px;background:#1764ed;border-radius:8px;color:#fff;font-family:Georgia,serif;font-size:21px;letter-spacing:0}nav{display:flex;gap:26px;align-items:center;font-size:13px;font-weight:700}nav>a:not(.pill){opacity:.72}.pill{padding:11px 15px;border:1px solid var(--ink);border-radius:999px}.hero{max-width:1240px;margin:auto;padding:62px 36px 82px;display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:48px}.eyebrow{margin:0 0 18px;color:#6a7783;font-size:10px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}h1,h2,h3{margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400}h1{font-size:clamp(48px,6vw,84px);line-height:.96;letter-spacing:-.065em}h1 em,h2 em{font-weight:400;color:#d26556}.lead{max-width:458px;margin:30px 0;color:#4d5963;font-size:18px;line-height:1.55}.actions{display:flex;align-items:center;gap:25px}.button{display:inline-flex;align-items:center;gap:18px;padding:15px 19px;background:var(--ink);color:#fff;border-radius:2px;font-size:12px;font-weight:800;letter-spacing:.04em}.text-link,.product-link{display:inline-flex;align-items:center;gap:9px;border-bottom:1px solid currentColor;padding-bottom:5px;font-size:13px;font-weight:700}.trust{display:flex;flex-wrap:wrap;margin-top:52px;color:#65717a;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.trust span{padding:0 14px;border-left:1px solid var(--line)}.trust span:first-child{padding-left:0;border:0}.hero-art{position:relative;min-height:485px;overflow:hidden;background:#dae8e2}.sun{position:absolute;width:400px;height:400px;left:22%;top:-180px;border-radius:50%;background:#f1c9a7}.stack{position:absolute;inset:27px 0 35px;display:grid;place-items:center}.book{position:absolute;width:218px;box-shadow:0 20px 35px rgba(27,42,50,.23)}.back{transform:translate(-95px,41px) rotate(-13deg)}.middle{transform:translate(52px,28px) rotate(11deg)}.front{transform:translate(-8px,-3px) rotate(-1deg)}.note{position:absolute;z-index:3;padding:11px 13px;color:#1b3640;background:#f7efd7;font-family:Georgia,serif;font-size:14px;line-height:1.15;box-shadow:0 8px 16px rgba(28,38,42,.12)}.n1{top:80px;left:27px;transform:rotate(-5deg)}.n2{right:18px;bottom:76px;transform:rotate(7deg)}.caption{position:absolute;left:25px;bottom:19px;margin:0;color:#45616a;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}.featured{background:var(--ink);color:#f9f6ef;padding:25px max(36px,calc((100vw - 1240px)/2 + 36px)) 84px}.kicker{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:15px;margin-bottom:44px;color:#b6c0c7;font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.featured-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:80px;max-width:1100px;margin:auto;align-items:center}.featured-art{min-height:455px;position:relative;display:grid;place-items:center;overflow:hidden;background:#17666b}.featured-art img{z-index:2;width:245px;filter:drop-shadow(12px 22px 18px rgba(0,0,0,.35))}.orbit{position:absolute;border:1px solid rgba(255,226,168,.52);border-radius:50%}.o1{width:400px;height:400px}.o2{width:540px;height:540px}.label{position:absolute;z-index:2;font-size:10px;letter-spacing:.26em;font-weight:800;color:#ead4a9}.top{top:34px;right:32px}.bottom{bottom:35px;left:30px}.featured h2,.heading h2,.about h2,.closing h2{font-size:clamp(37px,4vw,58px);line-height:1;letter-spacing:-.055em}.featured h2 em{color:#efb261}.featured-copy>p:not(.eyebrow){max-width:530px;margin:25px 0;color:#d0d8d8;font-size:17px;line-height:1.58}.featured ul{padding:0;margin:0 0 36px;list-style:none;color:#f1eee4;font-size:13px;line-height:2}.featured li:before{content:"✓";margin-right:11px;color:#f1b661}.feature-footer{display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(255,255,255,.18);padding-top:24px}.feature-footer small{display:block;color:#aebcbd;margin-bottom:4px;font-size:10px;text-transform:uppercase;letter-spacing:.14em}.feature-footer strong{font-family:Georgia,serif;font-size:27px;font-weight:400}.light{background:#f9f6ef;color:var(--ink)}.books{max-width:1240px;margin:auto;padding:100px 36px 115px}.heading{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:55px}.heading>p{max-width:320px;margin:0;color:#57636c;font-size:15px;line-height:1.55}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.card{position:relative;padding:22px 24px 27px;background:#f0e7df}.card:nth-child(2){background:#e5e5df}.card:nth-child(3){background:#dce8e3}.count{position:absolute;top:20px;right:22px;color:#6c7778;font-size:10px;letter-spacing:.15em}.cover{height:310px;display:grid;place-items:center;margin-bottom:30px;overflow:hidden}.cover img{max-height:282px;max-width:83%;box-shadow:12px 17px 18px rgba(23,37,58,.17)}.card .eyebrow{margin-bottom:10px}.card h3{font-size:28px;line-height:1;letter-spacing:-.04em}.sub{min-height:36px;margin:8px 0 17px;color:#516069;font-family:Georgia,serif;font-size:14px;line-height:1.25}.desc{min-height:69px;margin:0 0 23px;color:#4d5963;font-size:13px;line-height:1.5}.about{display:grid;grid-template-columns:.55fr 1.45fr;gap:70px;padding:100px max(36px,calc((100vw - 1030px)/2 + 36px));background:#e7ded1}.stamp{width:145px;height:145px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px solid rgba(23,37,58,.65);border-radius:50%;font-family:Georgia,serif;font-size:52px;line-height:.72}.stamp span{padding-top:14px;font-family:Arial,sans-serif;font-size:8px;line-height:1.3;letter-spacing:.15em;text-align:center}.about-copy>p:not(.eyebrow){max-width:600px;margin:26px 0;color:#4f5a61;font-size:17px;line-height:1.6}.about h2 em{color:#17666b}.closing{padding:108px 36px 115px;text-align:center;background:linear-gradient(180deg,#f7f4ed 0%,#f3e8d7 100%)}.closing h2{margin-bottom:31px}.closing h2 em{color:#d96f5d}footer{max-width:1240px;margin:auto;padding:30px 36px 40px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}.footer-brand{font-size:24px}.footer-brand .mark{width:25px;height:25px;font-size:17px;border-radius:6px}.links{display:flex;gap:18px;color:#59646a;font-size:11px;font-weight:700}footer p{grid-column:1/-1;margin:0;padding-top:20px;border-top:1px solid var(--line);color:#718087;font-size:10px;letter-spacing:.04em}@media(max-width:800px){.header{padding:18px 20px}.brand{font-size:25px}nav>a:not(.pill){display:none}.pill{padding:9px 11px}.hero{padding:40px 20px 55px;grid-template-columns:1fr;gap:45px}.hero-art{min-height:410px}.lead{font-size:16px}.trust{margin-top:36px}.featured{padding:20px 20px 60px}.featured-grid{grid-template-columns:1fr;gap:36px}.featured-art{min-height:390px}.books{padding:72px 20px}.heading{display:block}.heading>p{margin-top:20px}.cards{grid-template-columns:1fr;gap:15px}.about{grid-template-columns:1fr;gap:35px;padding:70px 20px}.closing{padding:75px 20px}footer{padding:28px 20px;grid-template-columns:1fr}.links{flex-wrap:wrap}.book{width:180px}.back{transform:translate(-77px,35px) rotate(-13deg)}.middle{transform:translate(46px,27px) rotate(11deg)}}
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap masthead">
-    <div>
-      <h1 class="press-logo"><img src="/assets/logo.webp" alt="Barrett Press" width="2706" height="544"></h1>
-      <p class="remit">Short, practical guides for people who are carrying too much and still have to get through the week.</p>
-      <p class="label est">Independent publisher · Established 2026</p>
-    </div>
-    <figure class="masthead-art">
-      <img src="/assets/hero-desk-43.webp" alt="A quiet desk with a notebook, a cup of coffee, reading glasses and a small stack of books" width="1200" height="900" fetchpriority="high">
-    </figure>
-  </div>
-</header>
-
-<main class="wrap">
-  <section class="cat" aria-label="Catalogue">
-
-    <article class="entry entry--clay">
-      <div class="plate plate--clay">
-        <img src="/covers/burned-out-and-broke.webp" alt="Burned Out &amp; Broke book cover" width="1024" height="1536" loading="lazy">
-      </div>
-      <div>
-        <p class="label">Burnout &amp; money</p>
-        <h2>Burned Out &amp; Broke</h2>
-        <p class="sub">The 30-Day Reset for Overwhelmed Women</p>
-        <p class="body">A compassionate thirty-day process for exhaustion and financial stress, built around fifteen quiet minutes a day. Each day gives you one reflection, one small action, and one honest journal prompt — with no perfect streak to maintain.</p>
-        <p class="meta"><span>Digital PDF</span><span>30 daily chapters</span><span>2026</span></p>
-        <a class="go" href="/burned-out-and-broke/">Read more<span aria-hidden="true">→</span></a>
-      </div>
-    </article>
-
-    <article class="entry entry--deep">
-      <div class="plate plate--deep">
-        <img src="/covers/unstuck-system.webp" alt="The Unstuck System book cover" width="2114" height="3000" loading="lazy">
-      </div>
-      <div>
-        <p class="label">Focus &amp; follow-through</p>
-        <h2>The Unstuck System</h2>
-        <p class="sub">Practical routines for ADHD brains</p>
-        <p class="body">For anyone who knows what needs doing and still cannot start. Short chapters on lowering the friction between intention and action, with re-entry points for the days the plan falls apart — and a routine that has a smaller setting for difficult weeks.</p>
-        <p class="meta"><span>Digital PDF</span><span>Revised edition</span><span>2026</span></p>
-        <a class="go" href="/unstuck-system/">Read more<span aria-hidden="true">→</span></a>
-      </div>
-    </article>
-
-    <article class="entry entry--teal">
-      <div class="plate plate--teal">
-        <img src="/covers/heat-smart-home-guide.webp" alt="The Heat-Smart Home Guide for Europe book cover" width="1024" height="1536" loading="lazy">
-      </div>
-      <div>
-        <p class="label">Home &amp; heat preparedness</p>
-        <h2>The Heat-Smart Home Guide</h2>
-        <p class="sub">A calm household plan for extreme heat in Europe</p>
-        <p class="body">For homes that were never built for weeks of heat, and households without air conditioning. Practical steps for keeping heat out, caring for children, older relatives and pets, using water wisely, and knowing when heat has become an emergency — with a 72-hour kit and a printable one-page checklist.</p>
-        <p class="meta"><span>Digital PDF</span><span>24 pages · A4</span><span>2026</span></p>
-        <a class="go" href="/heat-smart-home-guide/">Read more<span aria-hidden="true">→</span></a>
-      </div>
-    </article>
-
-  </section>
-
-  <section class="about">
-    <div class="about-grid">
-      <p class="label">About the press</p>
-      <div>
-        <p>Barrett Press publishes practical, non-clinical guides written by J. Barrett. Every title is built on the same idea: most people do not need to try harder. They need a smaller first step and a way back in after a bad week.</p>
-        <p>The books are short on purpose. They are written to be usable on a low-energy day, not admired on a shelf.</p>
-        <p>Questions about an order or a book: <a class="mailto" href="mailto:support@barrettpress.com">support@barrettpress.com</a></p>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="wrap">
-  <nav class="fnav" aria-label="Legal">
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/terms/">Terms of Use</a>
-    <a href="/refund/">Refund Policy</a>
-    <a href="mailto:support@barrettpress.com">Contact</a>
-  </nav>
-  <p>© 2026 Barrett Press. All rights reserved.</p>
-  <p class="disclaimer">All titles are published for general educational and informational purposes only. They do not provide medical, psychological, therapeutic, legal, or financial advice and are not a substitute for diagnosis, evaluation, or treatment. Results vary. Please seek support from a qualified professional when symptoms affect your health, safety, or daily functioning.</p>
-</footer>
-
+  <div class="announcement"><span>Independent digital publishing</span><span class="dot"></span><span>Practical guides for real life</span></div>
+  <header class="header"><a class="brand" href="#top"><span class="mark">B</span><span>Barrett<em>press</em></span></a><nav><a href="#books">Books</a><a href="#about">About</a><a class="pill" href="#featured">Explore the collection</a></nav></header>
+  <main>
+    <section class="hero" id="top"><div><p class="eyebrow">Small guides. Real support.</p><h1>Life gets heavy.<br><em>Start smaller.</em></h1><p class="lead">Thoughtfully designed practical guides for the moments when you need a clear next step — not another impossible standard.</p><div class="actions"><a class="button" href="#books">Find your guide <span>→</span></a><a class="text-link" href="#about">Why Barrett Press <span>↘</span></a></div><div class="trust"><span>Short by design</span><span>Made for low-energy days</span><span>Instant digital access</span></div></div><div class="hero-art"><div class="sun"></div><div class="note n1">a smaller<br>first step</div><div class="note n2">no perfect<br>streak required</div><div class="stack"><img class="book back" src="https://barrettpress.com/covers/unstuck-system.webp" alt="The Unstuck System"><img class="book middle" src="https://barrettpress.com/covers/burned-out-and-broke.webp" alt="Burned Out & Broke"><img class="book front" src="https://barrettpress.com/covers/heat-smart-home-guide.webp" alt="The Heat-Smart Home Guide"></div><p class="caption">Guides for the week you are actually having.</p></div></section>
+    <section class="featured" id="featured"><div class="kicker"><span>Featured now</span><span>01 / 03</span></div><div class="featured-grid"><div class="featured-art"><div class="orbit o1"></div><div class="orbit o2"></div><span class="label top">PREPARE</span><img src="https://barrettpress.com/covers/heat-smart-home-guide.webp" alt="The Heat-Smart Home Guide for Europe"><span class="label bottom">BREATHE</span></div><div class="featured-copy"><p class="eyebrow">For European homes</p><h2>A calmer way to prepare for <em>extreme heat.</em></h2><p>The Heat-Smart Home Guide turns a stressful weather alert into a practical household plan: what to do before, during and after the heat arrives.</p><ul><li>24 visual, A4-friendly pages</li><li>A 72-hour household plan</li><li>Clear action for families, carers and pets</li></ul><div class="feature-footer"><div><small>Digital guide</small><strong>€17.90</strong></div><a class="button light" href="https://barrettpress.com/heat-smart-home-guide/">Explore the guide →</a></div></div></div></section>
+    <section class="books" id="books"><div class="heading"><div><p class="eyebrow">The collection</p><h2>Useful on the days<br>you need it most.</h2></div><p>Each guide is made to feel clear, calm and possible — on your phone, at your desk or with a pen in hand.</p></div><div class="cards">
+      <article class="card"><div class="count">01</div><a class="cover" href="https://barrettpress.com/burned-out-and-broke/"><img src="https://barrettpress.com/covers/burned-out-and-broke.webp" alt="Burned Out & Broke"></a><p class="eyebrow">Burnout & money</p><h3>Burned Out & Broke</h3><p class="sub">The 30-Day Reset for Overwhelmed Women</p><p class="desc">A gentle daily reset for the woman carrying too much — emotionally, mentally and financially.</p><a class="product-link" href="https://barrettpress.com/burned-out-and-broke/">Discover the guide →</a></article>
+      <article class="card"><div class="count">02</div><a class="cover" href="https://barrettpress.com/unstuck-system/"><img src="https://barrettpress.com/covers/unstuck-system.webp" alt="The Unstuck System"></a><p class="eyebrow">Focus & follow-through</p><h3>The Unstuck System</h3><p class="sub">Practical routines for ADHD brains</p><p class="desc">Practical, forgiving routines for beginning again on the days the plan falls apart.</p><a class="product-link" href="https://barrettpress.com/unstuck-system/">Discover the guide →</a></article>
+      <article class="card"><div class="count">03</div><a class="cover" href="https://barrettpress.com/heat-smart-home-guide/"><img src="https://barrettpress.com/covers/heat-smart-home-guide.webp" alt="The Heat-Smart Home Guide"></a><p class="eyebrow">Home & heat preparedness</p><h3>The Heat-Smart Home Guide</h3><p class="sub">A calmer home plan for extreme heat in Europe</p><p class="desc">Clear, affordable steps for keeping a household cooler, safer and prepared — even without air conditioning.</p><a class="product-link" href="https://barrettpress.com/heat-smart-home-guide/">Discover the guide →</a></article>
+    </div></section>
+    <section class="about" id="about"><div class="stamp">BP<br><span>EST.<br>2026</span></div><div class="about-copy"><p class="eyebrow">About the press</p><h2>You do not need to try harder.<br><em>You need a way back in.</em></h2><p>Barrett Press makes concise, non-clinical digital guides for people navigating demanding, everyday lives. The books are intentionally short: they are meant to be opened when your attention is thin, not left unread on a shelf.</p><a class="text-link" href="mailto:support@barrettpress.com">Contact the press ↗</a></div></section>
+    <section class="closing"><p class="eyebrow">Your next page can be lighter</p><h2>One practical guide.<br><em>One easier next step.</em></h2><a class="button" href="#books">Explore all guides →</a></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#top"><span class="mark">B</span><span>Barrett<em>press</em></span></a><div class="links"><a href="https://barrettpress.com/privacy/">Privacy</a><a href="https://barrettpress.com/terms/">Terms</a><a href="https://barrettpress.com/refund/">Refund policy</a><a href="mailto:support@barrettpress.com">Support</a></div><p>© 2026 Barrett Press. Practical support for real life.</p></footer>
+  <script>
+    document.querySelectorAll('.brand').forEach((brand) => {
+      brand.innerHTML = '<img src="https://barrettpress.com/assets/logo.webp" alt="Barrett Press">';
+    });
+  </script>
 </body>
 </html>
